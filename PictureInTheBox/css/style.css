@@ -28,60 +28,30 @@ h1, h2{
 	background: transparent;
 	margin:auto;
 }
-.top-header img.logo{
-	margin-bottom: 25px;
-	margin-top: 0;
-	transition:all .5s ease 0s;
-  -webkit-transition:all .5s ease 0s;
-  -moz-transition:all .5s ease 0s;
-  -o-transition:all .5s ease 0s;
-  -ms-transition:all .5s ease 0s;
-}
+
 .navbar-default {
   background-color: transparent;
   border-color: transparent;
   margin-bottom: 0;
   margin-top: 8px;
+	margin-left : 10%;
   transition:all .5s ease 0s;
   -webkit-transition:all .5s ease 0s;
   -moz-transition:all .5s ease 0s;
   -o-transition:all .5s ease 0s;
   -ms-transition:all .5s ease 0s;
 }
-.nav-bar{
-	margin-top: 27px;
-}
+
 .navbar-toggle span{
 	color: #fff;
 }
-ul.nav{
-	margin: 0;
-	padding: 0;
-}
-.navbar-default .navbar-nav>li>a {
- 	font-size: 24px;
-	color: #737373;
-	text-transform: uppercase;
-	transition: all .7s ease 0s;
-	-webkit-transition: all .7s ease 0s;
-	-moz-transition: all .7s ease 0s;
-	-o-transition: all .7s ease 0s;
-	-ms-transition: all .7s ease 0s;
-	padding: 14px 15px;
-	font-weight: bold;
-}
-.navbar-default .navbar-nav>li>a:hover{
-	color: #42b3e5;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #fff;
-}
+
 li a.active{
 	color: #42b3e5 !important;
 }
-.navbar-default .navbar-toggle {
-  border-color: #fff;
-  margin-top: 4px;
+
+.navbar-right{
+	margin-right: 20%;
 }
 
 /*service area*/
@@ -425,7 +395,7 @@ responsive area
 	}
 	.navbar-default .navbar-toggle {
 		 border-color: #fff;
-		 margin-top: -7px;
+		 margin-top: 5px;
 		 right: 10%;
 	}
 	.navbar-default .navbar-nav>li>a {
