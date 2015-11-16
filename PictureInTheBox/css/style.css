@@ -17,7 +17,7 @@ h1, h2{
 
 /*header area*/
 .top-header{
-	background: #fff !important;
+	background: url(../img/pattern.jpg);
 	position: fixed;
 	width: 100%;
 	z-index: 99999;
@@ -74,7 +74,7 @@ ul.nav{
 	color: #42b3e5;
 }
 .navbar-default .navbar-toggle .icon-bar {
-  background-color: #000;
+  background-color: #fff;
 }
 li a.active{
 	color: #42b3e5 !important;
@@ -86,18 +86,18 @@ li a.active{
 
 /*service area*/
 .service{
-	background: url(../img/pattern.jpg);
+	background: #fff;
 	background-repeat: repeat-y scroll 0 0;
 }
 .service h2{
 	font-size: 90px;
-	color: #fff;
+	color: #0000;
 	margin-top: 60px;
 	margin-bottom: 70px;
 }
 .service h4{
 	font-size: 24px;
-	color: #fff;
+	color: #00000;
 	margin-top: 0;
 	margin-bottom: 70px;
 	display: block;
@@ -166,7 +166,7 @@ li a.active{
 }
 .single-service h3{
 	margin-top: 60px;
-	color: #fff;
+	color: #0000;
 	padding-bottom: 90px;
 }
 .service-img img.heart{
