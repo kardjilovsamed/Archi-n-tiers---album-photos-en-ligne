@@ -21,13 +21,34 @@ router.post('/', function(req, res) {
 
     if (err) throw err;
 
-    if (!user) {
+    user.comparePassword(req.body.password, function(err, isMatch) {
+        if (err) throw err;
+        if(isMatch) {
+          // if user is found and password is right
+          // create a token
+          var token = jwt.sign({email: user.email, nom: user.nom, prenom: user.prenom },
+              config.secret, {
+              expiresIn: 86400 // expires in 24 hours
+          });
+
+          // return the information including token as JSON
+          res.json({
+            success: true,
+            message: 'Enjoy your token!',
+            token: token
+          });
+        } else {
+          res.json({ success: false, message: 'Authentication failed. Wrong password.'});
+        }
+    });
+
+    /*if (!user) {
       res.json({ success: false, message: 'Authentication failed. User not found.' });
     } else if (user) {
 
       // check if password matches
       if (user.password != req.body.password) {
-        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        res.json({ success: false, message: user+' - Authentication failed. Wrong password. - '+req.body.password });
       } else {
 
         // if user is found and password is right
@@ -45,7 +66,7 @@ router.post('/', function(req, res) {
         });
       }
 
-    }
+    }*/
 
   });
 });
