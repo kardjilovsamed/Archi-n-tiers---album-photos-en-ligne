@@ -8,7 +8,7 @@ var config = require("../config/token");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('../views/index.html');
 });
 
 router.use('/signup', require('./signup'));

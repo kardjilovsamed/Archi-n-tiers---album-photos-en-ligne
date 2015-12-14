@@ -13,6 +13,10 @@ var AlbumSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    album: {
+        type: Schema.Types.ObjectId,
+        ref: 'Album'
+    },
     permissions: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
