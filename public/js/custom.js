@@ -16,7 +16,7 @@ jQuery(document).ready(function() {
               $(document).on("scroll", onScroll);
               
               //smoothscroll
-              $('a[href^="#"]').on('click', function (e) {
+              $('a[href ="#"]').on('click', function (e) {
                   e.preventDefault();
                   $(document).off("scroll");
                   
