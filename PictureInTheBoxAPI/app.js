@@ -1,6 +1,3 @@
-/*jslint node: true */
-"use strict";
-
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -75,6 +72,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
