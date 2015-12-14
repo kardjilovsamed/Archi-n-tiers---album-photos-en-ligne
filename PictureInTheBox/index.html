@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PictureInTheBox</title>
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
+	<!--link rel="stylesheet" href="css/blueimp-gallery.min.css"-->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+	<link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
 </head>
 <body>
 	
@@ -45,60 +49,102 @@
 				<div class="container">
 					<div class="row">
 						<div class="header-backup"></div>
-						<h2>Services</h2>
-
-						<div class="col-md-3 col-sm-6">
-							<div class="single-service">
-								<div class="single-service-img">
-									<div class="service-img">
-										<img class="heart img-responsive" src="img/service1.png" alt="">
-									</div>
-								</div>
-
-								<h3>Rapide</h3>
-							</div>
+						<h2>Gallerie d'Image</h2>
+						<br>
+						<!-- The container for the list of example images -->
+						<div id="links">
+							<a href="https://farm6.static.flickr.com/5695/22420180903_ed718359c1_b.jpg" title="Swan lake" data-gallery="">
+								<img src="https://farm6.static.flickr.com/5695/22420180903_ed718359c1_s.jpg"> </a>
+							<a href="https://farm6.static.flickr.com/5715/23034291745_b8404ee9fa_b.jpg" title="Fire and Ice" data-gallery="">
+								<img src="https://farm6.static.flickr.com/5715/23034291745_b8404ee9fa_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/698/23015970072_e481bcd087_b.jpg" title="entering.the.tunnel" data-gallery="">
+								<img src="https://farm1.static.flickr.com/698/23015970072_e481bcd087_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/667/22646518449_ea13cecc37_b.jpg" title="Wet rocks" data-gallery="">
+								<img src="https://farm1.static.flickr.com/667/22646518449_ea13cecc37_s.jpg"></a>
+							<a href="https://farm6.static.flickr.com/5836/23019885402_788b740d8f_b.jpg" title="Cherry tree" data-gallery="">
+								<img src="https://farm6.static.flickr.com/5836/23019885402_788b740d8f_s.jpg"></a>
+							<a href="https://farm6.static.flickr.com/5832/23012055316_fe2042413e_b.jpg" title="Unicorn required...." data-gallery="">
+								<img src="https://farm6.static.flickr.com/5832/23012055316_fe2042413e_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/705/22616197648_2f6e9a2b29_b.jpg" title="Karl @ The Golden Gate Bridge, San Francisco" data-gallery="">
+								<img src="https://farm1.static.flickr.com/705/22616197648_2f6e9a2b29_s.jpg"></a>
+							<a href="https://farm6.static.flickr.com/5636/23029916435_d1034aa856_b.jpg" title=""I Wanna be Vegan"..." data-gallery="">
+								<img src="https://farm6.static.flickr.com/5636/23029916435_d1034aa856_s.jpg"></a>
+							<a href="https://farm6.static.flickr.com/5760/22621534658_a124fe4a44_b.jpg" title="La Sagra's Flycatcher" data-gallery="">
+								<img src="https://farm6.static.flickr.com/5760/22621534658_a124fe4a44_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/671/23031379775_c72ca84674_b.jpg" title="November" data-gallery="">
+								<img src="https://farm1.static.flickr.com/671/23031379775_c72ca84674_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/591/22419864773_65b6849629_b.jpg" title="Roxy-Yellow.." data-gallery="">
+								<img src="https://farm1.static.flickr.com/591/22419864773_65b6849629_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/578/23042718581_820b2f2a23_b.jpg" title="STREET" data-gallery="">
+								<img src="https://farm1.static.flickr.com/578/23042718581_820b2f2a23_s.jpg"></a>
+							<a href="https://farm6.static.flickr.com/5663/23020336976_a6b62ee3fd_b.jpg" title="dream land" data-gallery="">
+								<img src="https://farm6.static.flickr.com/5663/23020336976_a6b62ee3fd_s.jpg"></a>
+							<a href="https://farm1.static.flickr.com/751/22423531224_028c080c15_b.jpg" title="Old Orchard Beach" data-gallery="">
+								<img src="https://farm1.static.flickr.com/751/22423531224_028c080c15_s.jpg"></a>
+							<a href="https://farm6.static.flickr.com/5661/22419472463_3e7486dddc_b.jpg" title="Fili tesi e fili spezzati [Explore n.12-15 nov.2015]" data-gallery="">
+								<img src="https://farm6.static.flickr.com/5661/22419472463_3e7486dddc_s.jpg"></a>
 						</div>
-
-						<div class="col-md-3 col-sm-6">
-							<div class="single-service">
-								<div class="single-service-img">
-									<div class="service-img">
-										<img class="brain img-responsive" src="img/service2.png" alt="">
-									</div>
-								</div>
-								<h3>Efficace</h3>
-							</div>
-						</div>
-
-						<div class="col-md-3 col-sm-6">
-							<div class="single-service">
-								<div class="single-service-img">
-									<div class="service-img">
-										<img class="knee img-responsive" src="img/service3.png" alt="">
-									</div>
-								</div>
-
-								<h3>Intuitif</h3>
-							</div>
-						</div>
-
-						<div class="col-md-3 col-sm-6">
-							<div class="single-service">
-								<div class="single-service-img">
-									<div class="service-img">
-										<img class="bone img-responsive" src="img/service4.png" alt="">
-									</div>
-								</div>
-
-								<h3>Simpliste</h3>
-							</div>
-						</div>
+						<br>
 					</div>
 				</div>
 			</section><!-- end of service section -->
 
-			<!--gallerie session-->
-			
+			<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+			<div id="blueimp-gallery" class="blueimp-gallery">
+					<!-- The container for the modal slides -->
+					<div class="slides">
+						<div class="slide" data-index="0" style="width: 1920px; left: 0px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="1" style="width: 1920px; left: -1920px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="2" style="width: 1920px; left: -3840px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="3" style="width: 1920px; left: -5760px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="4" style="width: 1920px; left: -7680px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="5" style="width: 1920px; left: -9600px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="6" style="width: 1920px; left: -11520px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="7" style="width: 1920px; left: -13440px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="8" style="width: 1920px; left: -15360px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="9" style="width: 1920px; left: -17280px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="10" style="width: 1920px; left: -19200px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="11" style="width: 1920px; left: -21120px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="12" style="width: 1920px; left: -23040px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="13" style="width: 1920px; left: -24960px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="14" style="width: 1920px; left: -26880px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="15" style="width: 1920px; left: -28800px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="16" style="width: 1920px; left: -30720px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="17" style="width: 1920px; left: -32640px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="18" style="width: 1920px; left: -34560px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="19" style="width: 1920px; left: -36480px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+						<div class="slide" data-index="20" style="width: 1920px; left: -38400px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+					</div>
+					<!-- Controls for the borderless lightbox -->
+					<h3 class="title"></h3>
+					<a class="prev">‹</a>
+					<a class="next">›</a>
+					<a class="close">×</a>
+					<a class="play-pause"></a>
+					<ol class="indicator"></ol>
+					<!-- The modal dialog, which will be used to wrap the lightbox content -->
+					<div class="modal fade">
+							<div class="modal-dialog">
+									<div class="modal-content">
+											<div class="modal-header">
+													<button type="button" class="close" aria-hidden="true">&times;</button>
+													<h4 class="modal-title"></h4>
+											</div>
+											<div class="modal-body next"></div>
+											<div class="modal-footer">
+													<button type="button" class="btn btn-default pull-left prev">
+															<i class="glyphicon glyphicon-chevron-left"></i>
+															Previous
+													</button>
+													<button type="button" class="btn btn-primary next">
+															Next
+															<i class="glyphicon glyphicon-chevron-right"></i>
+													</button>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
 			<!-- end of gallery section -->
 			
 			<!-- map section -->
@@ -177,6 +223,9 @@
 	<script src="js/smoothscroll.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/custom.js"></script>
-	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- Bootstrap JS is not required, but included for the responsive demo navigation and button states -->
+	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="js/bootstrap-image-gallery.min.js"></script>
 </body>
 </html>

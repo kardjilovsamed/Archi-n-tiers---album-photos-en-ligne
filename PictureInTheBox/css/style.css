@@ -60,10 +60,10 @@ li a.active{
 	background-repeat: repeat-y scroll 0 0;
 }
 .service h2{
-	font-size: 90px;
+	font-size: 50px;
 	color: #0000;
-	margin-top: 60px;
-	margin-bottom: 70px;
+	margin-top: 0px;
+	margin-bottom: 30px;
 }
 .service h4{
 	font-size: 24px;
