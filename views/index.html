@@ -31,12 +31,12 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<form class="navbar-form navbar-right" role="search">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Login">
-						<input type="text" class="form-control" placeholder="Password">
+						<input type="text" class="form-control" id="login" placeholder="Login">
+						<input type="text" class="form-control" id="password" placeholder="Password">
 					</div>
 					<!--button type="submit" class="btn btn-default">Connexion</button-->
-					<a class="btn btn-default" href="login.html">Connexion</a>
-					<button type="submit" class="btn btn-default">Inscription</button>
+					<button class="btn btn-default" id="connexionButton" type="submit">Connexion</button>
+					<button type="submit" id="inscriptionButton" class="btn btn-default">Inscription</button>
 				</form>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -221,5 +221,6 @@
 	<!-- Bootstrap JS is not required, but included for the responsive demo navigation and button states -->
 	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 	<script src="../public/js/bootstrap-image-gallery.min.js"></script>
+	<script src="../public/js/connexion.js"></script>
 </body>
 </html>
