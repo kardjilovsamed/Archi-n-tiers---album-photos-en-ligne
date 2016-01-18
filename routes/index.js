@@ -11,6 +11,11 @@ router.get('/', function(req, res, next) {
   res.render('../views/index.html');
 });
 
+/* GET home page. */
+router.get('/a', function(req, res, next) {
+  res.render('../views/login.html');
+});
+
 router.use('/signup', require('./signup'));
 
 router.use('/authenticate', require('./authenticate'));
