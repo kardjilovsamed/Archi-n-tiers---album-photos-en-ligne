@@ -15,32 +15,45 @@
 	
 <!-- header section -->
 <header class="top-header">
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="/">Picture in The Box</a>
-			</div>
+	<div class="navbar navbar-default">
+		<div class="container">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Picture In The Box</a>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<form class="navbar-form navbar-right" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" id="login" placeholder="Login">
-						<input type="text" class="form-control" id="password" placeholder="Password">
-					</div>
-					<!--button type="submit" class="btn btn-default">Connexion</button-->
-					<button class="btn btn-default" id="connexionButton" type="submit">Connexion</button>
-					<button type="submit" id="inscriptionButton" class="btn btn-default">Inscription</button>
-				</form>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
-	</nav>
+				<ul class="nav pull-right">
+					<li>
+						<form class="navbar-form navbar-right" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" id="login" placeholder="Login">
+								<input type="text" class="form-control" id="password" placeholder="Password">
+							</div>
+							<!--button type="submit" class="btn btn-default">Connexion</button-->
+							<button class="btn btn-default" id="connexionButton" type="submit">Connexion</button>
+						</form>
+					</li>
+
+					<li class="dropdown">
+						<div class="btn-group navbar-form navbar-right">
+							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</button>
+							<div class="dropdown-menu" style="padding:17px;">
+								<form class="form" id="formLogin">
+									<input type="text" name="username" id="usernameInscrip" placeholder="Login">
+									<input type="password" name="password" id="passwordInscrip" placeholder="Password"><br>
+									<button type="button" id="inscriptionButton" class="btn btn-default">Login</button>
+								</form>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+			</div><!-- /.nav-collapse -->
+		</div><!-- /.container -->
+	</div><!-- /.navbar -->
 </header> <!-- end of header area -->
 			
 	<!-- service section starts here -->
