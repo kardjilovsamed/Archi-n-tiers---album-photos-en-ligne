@@ -5,14 +5,28 @@ $(document).ready(function () {
     var token = localStorage.getItem("token");
     var idAlbumRoot = localStorage.getItem("idAlbumRoot");
 
-    $('a .album').click(function(){
+    var flag = 0;
+
+    $('.album').click(function(){
         alert('ALBUM !!!!!!!!!');
         idAlbumRoot = $(this).attr('href');
 
         $("#explorateur").empty();
         getAlbums();
 
+        return false;
     });
+
+
+    $('.img-responsive').click(function(){
+
+        $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
+        $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+
+        return false;
+    });
+
+
 
     $("#addButton").click(function(){
 

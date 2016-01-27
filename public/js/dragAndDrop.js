@@ -1,4 +1,17 @@
 
+var deltaX = 0;
+var deltaY = 0;
+
+var initPosX;
+var initPosY;
+
+$(".draggable").mousedown(function(event) {
+
+    var target = event.target;
+
+    initPosX = (parseFloat(target.getAttribute('data-x')) || 0);
+    initPosY = (parseFloat(target.getAttribute('data-y')) || 0);
+});
 
 /* The dragging code for '.draggable' from the demo above
  * applies to this demo as well so it doesn't have to be repeated. */
@@ -19,21 +32,19 @@ interact('.draggable')
         // call this function on every dragmove event
         onmove: dragMoveListener,
         // call this function on every dragend event
-        onend: function (event) {
-            var textEl = event.target.querySelector('p');
-
-            textEl && (textEl.textContent =
-                'moved a distance of '
-                + (Math.sqrt(event.dx * event.dx +
-                    event.dy * event.dy)|0) + 'px');
-        }
+        onend: cancelMoveListener
     });
+
 
 function dragMoveListener (event) {
     var target = event.target,
+
     // keep the dragged position in the data-x/data-y attributes
         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    deltaX = deltaX + event.dx;
+    deltaY = deltaY + event.dy;
 
     // translate the element
     target.style.webkitTransform =
@@ -43,6 +54,26 @@ function dragMoveListener (event) {
     // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
+}
+
+function cancelMoveListener (event) {
+    var target = event.target,
+
+    // keep the dragged position in the data-x/data-y attributes
+        x = initPosX,
+        y = initPosY;
+
+    // translate the element
+    target.style.webkitTransform =
+        target.style.transform =
+            'translate( ' + x + 'px, ' + y + 'px)';
+
+    // update the posiion attributes
+    target.setAttribute('data-x', initPosX);
+    target.setAttribute('data-y', initPosY);
+
+    deltaX = 0;
+    deltaY = 0;
 }
 
 // this is used later in the resizing and gesture demos

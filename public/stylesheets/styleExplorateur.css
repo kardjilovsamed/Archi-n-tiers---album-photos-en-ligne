@@ -22,9 +22,9 @@ body {
 
 img{
 	max-width: 100%;
-	height: auto;
+	width: 100%;
 	display:block;
-	margin: 10px 0 10px 0;
+	margin: 5px 0 10px 0;
 }
 
 .fa-lg {
@@ -47,7 +47,6 @@ img{
 
 
 .dropzone {
-	background-color: #ccc;
 	border: dashed 4px transparent;
 	border-radius: 4px;
 	transition: background-color 0.3s;
