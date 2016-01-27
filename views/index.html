@@ -32,18 +32,18 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<form class="form navbar-form" id="formLogin">
-								<input type="text" class="form-control" name="email" id="login" placeholder="Login">
-								<input type="password" class="form-control" name="password" id="password" placeholder="Password">
+								<input type="text" class="form-control" name="email" placeholder="Email">
+								<input type="password" class="form-control" name="password" placeholder="Password">
 								<button class="btn btn-default" type="submit">Connexion</button>
 							</form>
 						</li>
 						<li class="dropdown">
-							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="buttonInscrip">Inscription <b class="caret"></b></button>
+							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">Inscription <b class="caret"></b></button>
 							<ul class="dropdown-menu" style="padding: 17px;">
 								<li>
 									<form class="form" id="formInscription">
-										<input class="form-control" type="text" name="email" id="usernameInscrip" placeholder="Email"/>
-										<input class="form-control" type="password" name="password" id="passwordInscrip" placeholder="Password"/>
+										<input class="form-control" type="text" name="email" placeholder="Email"/>
+										<input class="form-control" type="password" name="password" placeholder="Password"/>
 										<button class="btn btn-primary" type="submit">Inscription</button>
 									</form>
 								</li>
@@ -63,6 +63,7 @@
 			<div class="row">
 				<div class="header-backup"></div>
 				<div id="responseInscription"></div>
+				<br/>
 				<h2>Gallerie d'Image</h2>
 				<br>
 				<!-- The container for the list of example images -->
@@ -271,7 +272,7 @@
 						window.location="/a";
 					},
 					error: function(data) {
-						alert(" Votre mot de passe ou votre email est incorrect.");
+						alert("Votre mot de passe ou votre email est incorrect.");
 
 					}
 				})
