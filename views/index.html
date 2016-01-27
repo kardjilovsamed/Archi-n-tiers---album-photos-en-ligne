@@ -12,54 +12,56 @@
 	<link rel="stylesheet" href="../public/stylesheets/bootstrap-image-gallery.min.css">
 </head>
 <body>
-	
-<!-- header section -->
-<header class="top-header">
-	<div class="navbar navbar-default">
-		<div class="container">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Picture In The Box</a>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav pull-right">
-					<li>
-						<form class="navbar-form navbar-right" role="search">
-							<div class="form-group">
+<header class="top-header">
+	<div class="bs-example">
+		<nav class="navbar navbar-default">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Picture In The Box</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<form class="form navbar-form" id="formLogin">
 								<input type="text" class="form-control" id="login" placeholder="Login">
 								<input type="text" class="form-control" id="password" placeholder="Password">
-							</div>
-							<!--button type="submit" class="btn btn-default">Connexion</button-->
-							<button class="btn btn-default" id="connexionButton" type="submit">Connexion</button>
-						</form>
-					</li>
+								<button class="btn btn-default" id="connexionButton" type="submit">Connexion</button>
+							</form>
+						</li>
+						<li class="dropdown">
+							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="buttonInscrip">Inscription <b class="caret"></b></button>
+							<ul class="dropdown-menu" style="padding: 17px;">
+								<li>
+									<form class="form" id="formInscription">
+										<input class="form-control" type="text" name="username" id="usernameInscrip" placeholder="Email"/>
+										<input class="form-control" type="password" name="password" id="passwordInscrip" placeholder="Password"/>
+										<button class="btn btn-primary" type="button" id="inscriptionButton" >Inscription</button>
+									</form>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div> <!-- container -->
+		</nav>
+	</div>
+</header>
 
-					<li class="dropdown">
-						<div class="btn-group navbar-form navbar-right">
-							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</button>
-							<div class="dropdown-menu" style="padding:17px;">
-								<form class="form" id="formLogin">
-									<input type="text" name="username" id="usernameInscrip" placeholder="Login">
-									<input type="password" name="password" id="passwordInscrip" placeholder="Password"><br>
-									<button type="button" id="inscriptionButton" class="btn btn-default">Login</button>
-								</form>
-							</div>
-						</div>
-					</li>
-				</ul>
-
-			</div><!-- /.nav-collapse -->
-		</div><!-- /.container -->
-	</div><!-- /.navbar -->
-</header> <!-- end of header area -->
 			
 	<!-- service section starts here -->
 	<section class="service text-center" id="service">
 		<div class="container">
 			<div class="row">
+				<div id="responseInscription"></div>
 				<div class="header-backup"></div>
 				<h2>Gallerie d'Image</h2>
 				<br>
@@ -105,7 +107,7 @@
 	<div id="blueimp-gallery" class="blueimp-gallery">
 		<!-- The container for the modal slides -->
 		<div class="slides">
-			<div class="slide" data-index="0" style="width: 1920px; left: 0px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
+			<div class="slide" data-index="0" style="width: 1920px; left: 0; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
 			<div class="slide" data-index="1" style="width: 1920px; left: -1920px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
 			<div class="slide" data-index="2" style="width: 1920px; left: -3840px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
 			<div class="slide" data-index="3" style="width: 1920px; left: -5760px; transition-duration: 0ms; transform: translate(-1920px, 0px) translateZ(0px);"></div>
@@ -192,10 +194,10 @@
 						<h3>Laissez nous votre message</h3>
 
 						<form class="form">
-							<input class="name" type="text" placeholder="Nom">
-							<input class="email" type="email" placeholder="Email">
-							<input class="phone" type="text" placeholder="Telephone">
-							<textarea class="message" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+							<input class="form-control name" type="text" placeholder="Nom">
+							<input class="form-control email" type="email" placeholder="Email">
+							<input class="form-control phone" type="text" placeholder="Telephone">
+							<textarea class="form-control message" name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
 							<input class="submit-btn" type="submit" value="ENVOYER">
 						</form>
 					</div>
@@ -230,10 +232,50 @@
 	<script src="../public/js/smoothscroll.js"></script>
 	<script src="../public/js/bootstrap.min.js"></script>
 	<script src="../public/js/custom.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<!-- Bootstrap JS is not required, but included for the responsive demo navigation and button states -->
-	<script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
 	<script src="../public/js/bootstrap-image-gallery.min.js"></script>
 	<script src="../public/js/connexion.js"></script>
+	<script type="application/javascript">
+		$(document).ready(function () {
+
+			// Post pour s'inscrire
+			$("#formInscription").submit(function (event) {
+				event.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "/signup",
+					data: $("#formInscription").serialize(),
+					dataType: "json",
+					encode: true,
+					success: function (data) {
+						$("#responseInscription").text(data.responseText);
+					},
+					error: function (data) {
+						$("#responseInscription").text(data.responseText);
+					}
+				})
+			});
+
+			//Post pour se connecter
+			$("#formLogin").submit(function (event) {
+				event.preventDefault();
+				$.ajax({
+					type: "POST",
+					url: "/authenticate",
+					data: $("#formLogin").serialize(),
+					dataType: "json",
+					async: false,
+					success: function(data){
+						alert(" Votre mot de passe ou votre email est incorrect.");
+					},
+					error: function(data) {
+						window.location="login.html";
+					}
+				})
+			});
+		});
+	</script>
 </body>
 </html>
