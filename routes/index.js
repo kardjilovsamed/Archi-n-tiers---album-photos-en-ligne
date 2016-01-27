@@ -1,10 +1,8 @@
-/*jslint node: true */
-"use strict";
-
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require("../config/token");
+var oauth2 = require('../config/oauth2');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,10 +16,12 @@ router.get('/a', function(req, res, next) {
 
 router.use('/signup', require('./signup'));
 
-router.use('/authenticate', require('./authenticate'));
+router.post('/authenticate', oauth2.token);
+
+//router.use('/authenticate', require('./authenticate'));
 
 // route middleware to verify a token
-router.use(function(req, res, next) {
+/*router.use(function(req, res, next) {
 
   // check header or url parameters or post parameters for token
   var token = req.headers['x-access-token'] || req.query.token || req.body.token;
@@ -50,7 +50,7 @@ router.use(function(req, res, next) {
     });
 
   }
-});
+});*/
 
 // /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 //From here on you need to be authenticated

@@ -7,7 +7,7 @@ var Album = require('../models/albums');
 var regExpEmail = /\w+@\w+\.\w+/;
 
 /* POST /users */
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res) {
     if (req.body.email) {
         User.findOne({email: req.body.email}, function(err, user) {
             if (err) return res.statusCode = 400;

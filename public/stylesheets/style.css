@@ -22,9 +22,10 @@ h1, h2{
 	width: 100%;
 	z-index: 99999;
 }
+
 .header-backup{
 	width: 20px;
-	height: 119px;
+	height: 90px;
 	background: transparent;
 	margin:auto;
 }
@@ -417,16 +418,16 @@ responsive area
 		 right: 10%;
 	}
 	.navbar-default .navbar-nav>li>a {
-	  font-size: 16px;
-	  text-align: left;
+	    font-size: 16px;
+	    text-align: left;
 	}
 	.header-backup{
-		  height: 80px;
+		height: 80px;
 	}
 	.about h2 {
-	  font-size: 50px;
-	  color: #42b3e5;
-	  margin-top: 30px;
+	  	font-size: 50px;
+	  	color: #42b3e5;
+	  	margin-top: 30px;
 	}
 	.service h2 {
 	  font-size: 50px;

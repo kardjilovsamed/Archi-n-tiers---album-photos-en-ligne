@@ -1,8 +1,6 @@
-/*jslint node: true */
-"use strict";
-
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
 
 var User = require('../models/users');
 
@@ -17,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET /users/id */
-router.get('/:id', function (req, res, next) {
+router.get('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     User.findById(req.params.id, function(err, user) {
         if (err) return next(err);
         res.json(user);
@@ -25,7 +23,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 /* PUT /users/id */
-router.put('/:id', function (req, res, next) {
+router.put('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     if (req.body.email) {
         if (regExpEmail.test(req.body.email)) {
             User.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
@@ -42,7 +40,7 @@ router.put('/:id', function (req, res, next) {
 });
 
 /* DELETE /users/:id */
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', passport.authenticate('bearer', { session: false }), function(req, res, next) {
   User.findByIdAndRemove(req.params.id, req.body, function (err, user) {
     if (err) return next(err);
     res.json(user);

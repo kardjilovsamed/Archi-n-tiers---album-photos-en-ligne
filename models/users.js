@@ -61,6 +61,10 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     });*/
 };
 
+UserSchema.methods.checkPassword = function(candidatePassword) {
+    return passwordHash.verify(candidatePassword, this.password);
+};
+
 var User = mongoose.model('User', UserSchema);
 
 module.exports = User;

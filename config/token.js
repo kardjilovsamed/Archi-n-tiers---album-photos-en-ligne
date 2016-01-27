@@ -2,5 +2,6 @@
 "use strict";
 
 module.exports = {
-    'secret': 'test'
+    'secret': 'test',
+    'tokenLife': 3600
 };
