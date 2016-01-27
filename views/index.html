@@ -38,7 +38,7 @@
 							</form>
 						</li>
 						<li class="dropdown">
-							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown">Inscription <b class="caret"></b></button>
+							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="buttonInscrip">Inscription <b class="caret"></b></button>
 							<ul class="dropdown-menu" style="padding: 17px;">
 								<li>
 									<form class="form" id="formInscription">
@@ -252,6 +252,8 @@
 					encode: true,
 					success: function (data) {
 						$("#responseInscription").text("Connection réussie pour " + data.email);
+						localStorage.setItem("album", data.albumRoot);
+						localStorage.setItem("email", data.email);
 					},
 					error: function (data) {
 						$("#responseInscription").text(data.responseText);
@@ -278,6 +280,14 @@
 				})
 			});
 		});
+	</script>
+
+	<script>
+		var tokenUrl = "http://localhost:3000/token";
+		var loginData = $("#userSignup").serialize();
+		loginData = loginData + "&grant_type=password";
+		$.post(tokenUrl, loginData);
+
 	</script>
 </body>
 </html>
