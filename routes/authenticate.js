@@ -38,10 +38,12 @@ router.post('/', function(req, res) {
                     token: token
                 });
             } else {
+                res.statusCode = 400;
                 res.json({success: false, message: 'Authentication failed. Wrong password.'});
             }
         });
     } else {
+        res.statusCode = 400;
         res.json({success: false, message: 'Authentication failed. Wrong credentials.'});
     }
 
