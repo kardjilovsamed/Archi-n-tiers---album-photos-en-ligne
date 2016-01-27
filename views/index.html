@@ -33,7 +33,7 @@
 						<li>
 							<form class="form navbar-form" id="formLogin">
 								<input type="text" class="form-control" name="email" id="login" placeholder="Login">
-								<input type="text" class="form-control" name="password" id="password" placeholder="Password">
+								<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 								<button class="btn btn-default" type="submit">Connexion</button>
 							</form>
 						</li>
@@ -250,7 +250,7 @@
 					dataType: "json",
 					encode: true,
 					success: function (data) {
-						$("#responseInscription").text(data.responseText);
+						$("#responseInscription").text("Connection réussie pour " + data.email);
 					},
 					error: function (data) {
 						$("#responseInscription").text(data.responseText);
@@ -268,10 +268,11 @@
 					dataType: "json",
 					async: false,
 					success: function(data){
-						alert(" Votre mot de passe ou votre email est incorrect.");
+						window.location="/a";
 					},
 					error: function(data) {
-						window.location="login.html";
+						alert(" Votre mot de passe ou votre email est incorrect.");
+
 					}
 				})
 			});
