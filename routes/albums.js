@@ -2,6 +2,7 @@
 "use strict";
 
 var express = require('express');
+var passport = require('passport');
 
 var multer = require('multer');
 var storage = multer.diskStorage({
@@ -15,7 +16,7 @@ var router = express.Router();
 var Album = require('../models/albums');
 
 /* GET albums listing. */
-router.get('/', function(req, res, next) {
+router.get('/', passport.authenticate('bearer', { session: false }), function(req, res, next) {
   Album.find(function(err, albums) {
     if (err) return next(err);
     res.json(albums);
@@ -23,7 +24,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET /albums/id */
-router.get('/:id', function (req, res, next) {
+router.get('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
         res.json(album);
@@ -31,7 +32,7 @@ router.get('/:id', function (req, res, next) {
 });
 
 /* GET /albums/id/content */
-router.get('/:id/content', function (req, res, next) {
+router.get('/:id/content', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
         res.json(album);
@@ -39,7 +40,7 @@ router.get('/:id/content', function (req, res, next) {
 });
 
 /* POST /albums */
-router.post('/', function (req, res, next) {
+router.post('/', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
@@ -47,7 +48,7 @@ router.post('/', function (req, res, next) {
 });
 
 /* POST /albums/id/upload */
-router.post('/:id/upload', upload.array('photos', 8), function (req, res, next) {
+router.post('/:id/upload', passport.authenticate('bearer', { session: false }), upload.array('photos', 8), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
         var owner = album.owner;
@@ -57,7 +58,7 @@ router.post('/:id/upload', upload.array('photos', 8), function (req, res, next) 
 });
 
 /* PUT /albums/id */
-router.put('/:id', function (req, res, next) {
+router.put('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findByIdAndUpdate(req.params.id, req.body, function(err, album) {
         if (err) return next(err);
         res.json(album);
@@ -66,7 +67,7 @@ router.put('/:id', function (req, res, next) {
 });
 
 /* DELETE /albums/:id */
-router.delete('/:id', function(req, res, next) {
+router.delete('/:id', passport.authenticate('bearer', { session: false }), function(req, res, next) {
   Album.findByIdAndRemove(req.params.id, req.body, function (err, album) {
     if (err) return next(err);
     res.json(album);
