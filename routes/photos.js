@@ -6,6 +6,12 @@ var router = express.Router();
 
 var Photo = require('../models/photos');
 
+/* GET /photos/test */
+router.get('/test', function(req, res, next) {
+    var photos = {truc: "bidule"};
+    res.json(photos);
+});
+
 /* GET photos listing. */
 router.get('/', function(req, res, next) {
   Photo.find(function(err, photos) {
