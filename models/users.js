@@ -2,19 +2,24 @@
 "use strict";
 
 var mongoose = require("mongoose");
+var passwordHash = require("password-hash");
 var Schema = mongoose.Schema;
 var Album = require('./albums');
 
-var bcrypt = require('bcrypt'), SALT_WORK_FACTOR = 10;
+//var bcrypt = require('bcrypt'), SALT_WORK_FACTOR = 10;
 
 var UserSchema = new mongoose.Schema({
-    username: {type: String, required: true},
-    email: {type: String, required: true},
+    username: {type: String, required: true, unique: true},
+    email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     suggestions: [{
         type: Schema.Types.ObjectId,
         ref: 'User'
     }],
+    albumRoot: {
+        type: Schema.Types.ObjectId,
+        ref: 'Album'
+    },
     albums: [{
         type: Schema.Types.ObjectId,
         ref: 'Album'
@@ -26,10 +31,12 @@ var UserSchema = new mongoose.Schema({
 UserSchema.pre('save', function(next) {
     var user = this;
 
-// only hash the password if it has been modified (or is new)
-if (!user.isModified('password')) return next();
+    // only hash the password if it has been modified (or is new)
+    if (!user.isModified('password')) return next();
 
-// generate a salt
+    user.password = passwordHash.generate(user.password);
+    next();
+/*// generate a salt
 bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
     if (err) return next(err);
 
@@ -41,16 +48,17 @@ bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
         user.password = hash;
         next();
     });
-});
+});*/
 
 
 });
 
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+    cb(null, passwordHash.verify(candidatePassword, this.password));
+    /*bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
-    });
+    });*/
 };
 
 var User = mongoose.model('User', UserSchema);
