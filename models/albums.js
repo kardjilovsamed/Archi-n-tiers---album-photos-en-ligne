@@ -13,7 +13,7 @@ var AlbumSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    album: {
+    parentAlbum: {
         type: Schema.Types.ObjectId,
         ref: 'Album'
     },

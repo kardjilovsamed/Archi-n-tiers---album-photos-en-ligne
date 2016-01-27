@@ -28,6 +28,14 @@ router.get('/:id', function (req, res, next) {
     });
 });
 
+/* GET /photos/albumId */
+router.get('/:allbumId', function (req, res, next) {
+    Photo.findByAlbumId(req.params.album, function(err, photo) {
+        if (err) return next(err);
+        res.json(photo);
+    });
+});
+
 /* POST /photos */
 router.post('/', function (req, res, next) {
     Photo.create(req.body, function (err, post) {
