@@ -32,9 +32,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li>
 							<form class="form navbar-form" id="formLogin">
-								<input type="text" class="form-control" id="login" placeholder="Login">
-								<input type="text" class="form-control" id="password" placeholder="Password">
-								<button class="btn btn-default" id="connexionButton" type="submit">Connexion</button>
+								<input type="text" class="form-control" name="email" id="login" placeholder="Login">
+								<input type="text" class="form-control" name="password" id="password" placeholder="Password">
+								<button class="btn btn-default" type="submit">Connexion</button>
 							</form>
 						</li>
 						<li class="dropdown">
@@ -42,9 +42,9 @@
 							<ul class="dropdown-menu" style="padding: 17px;">
 								<li>
 									<form class="form" id="formInscription">
-										<input class="form-control" type="text" name="username" id="usernameInscrip" placeholder="Email"/>
+										<input class="form-control" type="text" name="email" id="usernameInscrip" placeholder="Email"/>
 										<input class="form-control" type="password" name="password" id="passwordInscrip" placeholder="Password"/>
-										<button class="btn btn-primary" type="button" id="inscriptionButton" >Inscription</button>
+										<button class="btn btn-primary" type="submit">Inscription</button>
 									</form>
 								</li>
 							</ul>
@@ -61,8 +61,8 @@
 	<section class="service text-center" id="service">
 		<div class="container">
 			<div class="row">
-				<div id="responseInscription"></div>
 				<div class="header-backup"></div>
+				<div id="responseInscription"></div>
 				<h2>Gallerie d'Image</h2>
 				<br>
 				<!-- The container for the list of example images -->
