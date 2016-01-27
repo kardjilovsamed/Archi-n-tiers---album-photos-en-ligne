@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 var Album = require('./albums');
 
-//var bcrypt = require('bcrypt'), SALT_WORK_FACTOR = 10;
+var bcrypt = require('bcrypt'), SALT_WORK_FACTOR = 10;
 
 var UserSchema = new mongoose.Schema({
     username: {type: String, required: true},
@@ -23,7 +23,7 @@ var UserSchema = new mongoose.Schema({
 });
 
 
-/*UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
     var user = this;
 
 // only hash the password if it has been modified (or is new)
@@ -51,7 +51,7 @@ UserSchema.methods.comparePassword = function(candidatePassword, cb) {
         if (err) return cb(err);
         cb(null, isMatch);
     });
-};*/
+};
 
 var User = mongoose.model('User', UserSchema);
 

@@ -20,27 +20,30 @@ router.post('/', function(req, res) {
   }, function(err, user) {
 
     if (err) throw err;
+    if (user) {
+        user.comparePassword(req.body.password, function (err, isMatch) {
+            if (err) throw err;
+            if (isMatch) {
+                // if user is found and password is right
+                // create a token
+                var token = jwt.sign({email: user.email, nom: user.nom, prenom: user.prenom},
+                    config.secret, {
+                        expiresIn: 86400 // expires in 24 hours
+                    });
 
-    user.comparePassword(req.body.password, function(err, isMatch) {
-        if (err) throw err;
-        if(isMatch) {
-          // if user is found and password is right
-          // create a token
-          var token = jwt.sign({email: user.email, nom: user.nom, prenom: user.prenom },
-              config.secret, {
-              expiresIn: 86400 // expires in 24 hours
-          });
-
-          // return the information including token as JSON
-          res.json({
-            success: true,
-            message: 'Enjoy your token!',
-            token: token
-          });
-        } else {
-          res.json({ success: false, message: 'Authentication failed. Wrong password.'});
-        }
-    });
+                // return the information including token as JSON
+                res.json({
+                    success: true,
+                    message: 'Enjoy your token!',
+                    token: token
+                });
+            } else {
+                res.json({success: false, message: 'Authentication failed. Wrong password.'});
+            }
+        });
+    } else {
+        res.json({success: false, message: 'Authentication failed. Wrong credentials.'});
+    }
 
     /*if (!user) {
       res.json({ success: false, message: 'Authentication failed. User not found.' });
