@@ -26,7 +26,8 @@
     "passport-local": "^1.0.0",
     "passport-oauth2-client-password": "^0.1.2",
     "password-hash": "^1.2.2",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "interact.js": "~1.2.6"
   },
   "devDependencies": {
     "jshint": "^2.8.0",
