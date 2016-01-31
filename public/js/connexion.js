@@ -1,25 +1,39 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    $("connexionButton").click(function(){
-        var login = $("#login").val();
-        var password = $("#password").val();
-
-        var param = {"login" : login, "password" : password};
-
-        $.post("/login", param, function(data){
-            alert(data);
-        });
+    // Post pour s'inscrire
+    $("#formInscription").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/signup",
+            data: $("#formInscription").serialize(),
+            dataType: "json",
+            encode: true,
+            success: function (data) {
+                $("#responseInscription").text("Connection réussie pour " + data.email);
+            },
+            error: function (data) {
+                $("#responseInscription").text(data.responseText);
+            }
+        })
     });
 
-    $("inscriptionButton").click(function(){
-        var login = $("#login").val();
-        var password = $("#password").val();
-        //ajouter le champ pour le mail
-
-        var param = {"login" : login, "password" : password};
-
-        $.post("/inscription", param, function(data){
-            alert(data);
-        });
-    })
+    //Post pour se connecter
+    $("#formLogin").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "/authenticate",
+            data: $("#formLogin").serialize(),
+            dataType: "json",
+            async: false,
+            success: function(data){
+                window.location="/a";
+                window.localStorage.setItem("albumRoot", data.albumRoot)
+            },
+            error: function(data) {
+                alert("Votre mot de passe ou votre email est incorrect.");
+            }
+        })
+    });
 });
