@@ -108,6 +108,7 @@ interact('.dropzone').dropzone({
         var draggableElement = event.relatedTarget;
         var dropzoneElement = event.target;
 
+        alert("coucou");
         draggableElement.style.display = "none";
 
         //alert("dossier : " + dropzoneElement.id + "\nImage: " + draggableElement.id);

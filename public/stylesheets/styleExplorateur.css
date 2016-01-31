@@ -67,16 +67,15 @@ img{
 	border-style: solid;
 }
 
+
 .drag-drop {
 	display: inline-block;
-	min-width: 40px;
-	padding: 2em 0.5em;
+	padding: 0 0.5em;
 	color: #fff;
 	-webkit-transform: translate(0px, 0px);
 	transform: translate(0px, 0px);
 	transition: background-color 0.3s;
 }
-
 .drag-drop.can-drop {
 	color: #000;
 	background-color: #4e4;
