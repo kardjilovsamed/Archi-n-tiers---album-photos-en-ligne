@@ -4,10 +4,11 @@ var passport = require('passport');
 var router = express.Router();
 
 var Album = require('../models/albums');
+var Photo = require('../models/photos');
 
 /* GET albums listing. */
 router.get('/', passport.authenticate('bearer', { session: false }), function(req, res, next) {
-  Album.find(function(err, albums) {
+  Album.find({owner: req.user.id}, function(err, albums) {
     if (err) return next(err);
     res.json(albums);
   });
@@ -25,12 +26,17 @@ router.get('/:id', passport.authenticate('bearer', { session: false }), function
 router.get('/:id/content', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
-        res.json(album);
+        Photo.find({album: req.params.id}, function(err, photos) {
+            if (err) return next(err);
+            res.json(photos);
+        });
     });
 });
 
 /* POST /albums */
 router.post('/', passport.authenticate('bearer', { session: false }), function (req, res, next) {
+    req.body.owner = req.user.id;
+    req.body.parentAlbum = req.user.albumRoot;
     Album.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
@@ -40,6 +46,15 @@ router.post('/', passport.authenticate('bearer', { session: false }), function (
 /* PUT /albums/id */
 router.put('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findByIdAndUpdate(req.params.id, req.body, function(err, album) {
+        if (err) return next(err);
+        res.json(album);
+
+    });
+});
+
+/* POST /albums/id */
+router.post('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
+    Album.findById(req.params.id, req.body, function(err, album) {
         if (err) return next(err);
         res.json(album);
 

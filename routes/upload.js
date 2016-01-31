@@ -18,7 +18,7 @@ var upload = multer({ storage: storage,
     fileFilter: function (req, file, cb) {
         var type = file.mimetype;
         var typeArray = type.split("/");
-        if (typeArray[0] == "video" || typeArray[0] == "image") {
+        if (typeArray[0] == "image") {
             cb(null, true);
         }else {
             cb(null, false);
