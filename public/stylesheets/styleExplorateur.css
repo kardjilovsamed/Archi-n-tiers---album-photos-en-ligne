@@ -35,16 +35,17 @@ img{
 	margin-top: 5px;
 }
 
-
-
-
+.breadcrumb {background: rgba(245, 245, 245, 0); border: 0px solid rgba(255, 255, 255, 1); border-radius: 0px; display: block;}
+.breadcrumb li {font-size: 23px;}
+.breadcrumb a {color: rgba(66, 139, 202, 1);}
+.breadcrumb a:hover {color: rgba(42, 100, 150, 1);}
+.breadcrumb>.active {color: rgba(0, 0, 0, 1);}
+.breadcrumb>li+li:before {color: rgba(204, 204, 204, 1); content: "\002F\00a0";}
 
 
 .drag-transparent{
 	opacity: 0.5;
 }
-
-
 
 .dropzone {
 	border: dashed 4px transparent;
@@ -66,13 +67,9 @@ img{
 	display: inline-block;
 	min-width: 40px;
 	padding: 2em 0.5em;
-
 	color: #fff;
-
-
 	-webkit-transform: translate(0px, 0px);
 	transform: translate(0px, 0px);
-
 	transition: background-color 0.3s;
 }
 
@@ -80,8 +77,3 @@ img{
 	color: #000;
 	background-color: #4e4;
 }
-
-
-
-
-

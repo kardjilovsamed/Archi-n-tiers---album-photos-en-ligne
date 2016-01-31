@@ -7,12 +7,46 @@ $(document).ready(function () {
 
     var flag = 0;
 
-    $('.album').click(function(){
-        alert('ALBUM !!!!!!!!!');
-        idAlbumRoot = $(this).attr('href');
+    $(document).on('click', '.breadcrumb li', function(){
 
-        $("#explorateur").empty();
-        getAlbums();
+        idAlbumRoot = $(this).attr('id');
+
+        //$("#explorateur").empty();
+        //getAlbums();
+
+
+        while($('#breadcrumb').children().last().attr('id') != $(this).attr('id')){
+            $('#breadcrumb').children().last().remove();
+        }
+
+
+        var foldernameFormer = $('#breadcrumb').children().last().text();
+        var folderIdFormer = $('#breadcrumb').children().last().attr('id');
+
+        $('#breadcrumb').children().last().remove();
+        $("#breadcrumb").append( '<li id="' + folderIdFormer + '" class="active">' + foldernameFormer + '</li>');
+
+
+    });
+
+    $(document).on('click', '.album', function(){
+
+        idAlbumRoot = $(this).attr('id');
+
+
+        var foldernameFormer = $('#breadcrumb li.active').text();
+        var folderIdFormer = $('#breadcrumb li.active').attr('id');
+
+        $('#breadcrumb li.active').remove();
+
+        $('#breadcrumb').append( '<li id="' + folderIdFormer + '"><a href="#" class="breadcrumbLink">' + foldernameFormer + '</a></li>');
+
+        $("#breadcrumb").append( '<li id="' + idAlbumRoot + '" class="active">' + $(this).find('a:first').text() + '</li>');
+
+
+        //$("#explorateur").empty();
+
+        //getAlbums();
 
         return false;
     });
@@ -32,12 +66,14 @@ $(document).ready(function () {
 
         var folderName = prompt("Nom du nouveau dossier", "Nom");
 
+        var folderId = "folderId";
+
         if (folderName != null) {
-            $("#explorateur").prepend(  '<div class="col-md-2">' +
-                                            '<a href="onvera.com" class="album"> ' +
+            $("#explorateur").prepend( '<div id="' + folderId + '" class="col-md-2 album dropzone draggable drag-drop yes-drop">' +
+                                           '<a href="onvera.com">' +
                                                 '<i class="fa fa-folder fa-lg"></i><br/>' + folderName +
                                             '</a>' +
-                                        '</div>')
+                                        '</div>' );
         }
 
 
