@@ -26,9 +26,15 @@ router.get('/:id', passport.authenticate('bearer', { session: false }), function
 router.get('/:id/content', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
+        var content = {current: album};
         Photo.find({album: req.params.id}, function(err, photos) {
             if (err) return next(err);
-            res.json(photos);
+            content.photos = photos;
+            Album.find({parentAlbum: req.params.id}, function(err, albums) {
+                if (err) return next(err);
+                content.albums = albums;
+                return res.json(content);
+            });
         });
     });
 });

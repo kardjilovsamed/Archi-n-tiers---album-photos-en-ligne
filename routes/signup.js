@@ -17,7 +17,6 @@ router.post('/', function (req, res) {
             } else {
                 if (regExpEmail.test(req.body.email)) {
                     var newUser = new User();
-                    newUser.username = req.body.username;
                     newUser.email = req.body.email;
                     newUser.password = req.body.password;
                     //newUser.save();

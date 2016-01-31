@@ -35,8 +35,8 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<form class="form navbar-form" id="formLogin">
-									<input type="text" class="form-control" name="email" placeholder="Email">
+								<form class="form navbar-form" id="formLogin" enctype="application/json">
+									<input type="text" class="form-control" name="username" placeholder="Email">
 									<input type="password" class="form-control" name="password" placeholder="Password">
 									<input type="hidden" name="grant_type" value="password">
 									<input type="hidden" name="client_id" value="webClient">
@@ -48,7 +48,7 @@
 								<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="buttonInscrip">Inscription <b class="caret"></b></button>
 								<ul class="dropdown-menu" style="padding: 17px;">
 									<li>
-										<form class="form" id="formInscription">
+										<form class="form" id="formInscription" enctype="application/json">
 											<input class="form-control" type="text" name="email" placeholder="Email"/>
 											<input class="form-control" type="password" name="password" placeholder="Password"/>
 											<button class="btn btn-primary" type="submit">Inscription</button>

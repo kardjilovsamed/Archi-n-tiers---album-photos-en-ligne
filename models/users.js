@@ -9,7 +9,6 @@ var Album = require('./albums');
 //var bcrypt = require('bcrypt'), SALT_WORK_FACTOR = 10;
 
 var UserSchema = new mongoose.Schema({
-    username: {type: String, required: true, unique: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true},
     suggestions: [{
