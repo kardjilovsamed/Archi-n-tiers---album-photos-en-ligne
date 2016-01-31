@@ -144,7 +144,6 @@
 		</div>
 	</footer>
 
-
 	<!-- script tags -->
 	<script src="../public/js/jquery-2.1.1.js"></script>
     <script src="../public/js/bootstrap.min.js"></script>
@@ -158,46 +157,6 @@
 
 	<!-- Nos javascript -->
 	<script src="../public/js/connexion.js"></script>
-	<script type="application/javascript">
-		$(document).ready(function () {
-
-			// Post pour s'inscrire
-			$("#formInscription").submit(function (event) {
-				event.preventDefault();
-				$.ajax({
-					type: "POST",
-					url: "/signup",
-					data: $("#formInscription").serialize(),
-					dataType: "json",
-					encode: true,
-					success: function (data) {
-						$("#responseInscription").text("Connection réussie pour " + data.email);
-					},
-					error: function (data) {
-						$("#responseInscription").text(data.responseText);
-					}
-				})
-			});
-
-			//Post pour se connecter
-			$("#formLogin").submit(function (event) {
-				event.preventDefault();
-				$.ajax({
-					type: "POST",
-					url: "/authenticate",
-					data: $("#formLogin").serialize(),
-					dataType: "json",
-					async: false,
-					success: function(data){
-						window.location="/a";
-					},
-					error: function(data) {
-						alert("Votre mot de passe ou votre email est incorrect.");
-					}
-				})
-			});
-		});
-	</script>
 
 	<!--Permet d'animer l'affichage des boutons -->
     <script>
