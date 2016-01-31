@@ -1,5 +1,4 @@
 <!-- TO DO
-- changer la hauteur de la barre de menu
 - changer la photo de l'api Google maps
 -->
 
@@ -11,62 +10,59 @@
 	<link rel="stylesheet" href="../public/stylesheets/font-awesome.min.css">
 	<link rel="stylesheet" href="../public/stylesheets/bootstrap.min.css">
 	<link rel="stylesheet" href="../public/stylesheets/style.css">
-
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
-
 	<link rel="stylesheet" href="../public/stylesheets/blueimp-gallery.min.css">
     <link rel="stylesheet" href="../public/stylesheets/blueimp-gallery-indicator.css">
+
 </head>
 <body>
 
-<header class="top-header">
-	<div class="bs-example">
-		<nav class="navbar navbar-default">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">Picture In The Box</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li>
-							<form class="form navbar-form" id="formLogin">
-								<input type="text" class="form-control" name="email" placeholder="Email">
-								<input type="password" class="form-control" name="password" placeholder="Password">
-								<input type="hidden" name="grant_type" value="password">
-								<input type="hidden" name="client_id" value="webClient">
-								<input type="hidden" name="client_secret" value="secret">
-								<button class="btn btn-default" type="submit">Connexion</button>
-							</form>
-						</li>
-						<li class="dropdown">
-							<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="buttonInscrip">Inscription <b class="caret"></b></button>
-							<ul class="dropdown-menu" style="padding: 17px;">
-								<li>
-									<form class="form" id="formInscription">
-										<input class="form-control" type="text" name="email" placeholder="Email"/>
-										<input class="form-control" type="password" name="password" placeholder="Password"/>
-										<button class="btn btn-primary" type="submit">Inscription</button>
-									</form>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div> <!-- container -->
-		</nav>
-	</div>
-</header>
+	<header class="top-header">
+		<div class="bs-example">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle for mobile display -->
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Picture In The Box</a>
+					</div>
+					<!-- Content of the navbar -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<form class="form navbar-form" id="formLogin">
+									<input type="text" class="form-control" name="email" placeholder="Email">
+									<input type="password" class="form-control" name="password" placeholder="Password">
+									<input type="hidden" name="grant_type" value="password">
+									<input type="hidden" name="client_id" value="webClient">
+									<input type="hidden" name="client_secret" value="secret">
+									<button class="btn btn-default" type="submit">Connexion</button>
+								</form>
+							</li>
+							<li class="dropdown">
+								<button class="btn btn-default dropdown-toggle" href="#" data-toggle="dropdown" id="buttonInscrip">Inscription <b class="caret"></b></button>
+								<ul class="dropdown-menu" style="padding: 17px;">
+									<li>
+										<form class="form" id="formInscription">
+											<input class="form-control" type="text" name="email" placeholder="Email"/>
+											<input class="form-control" type="password" name="password" placeholder="Password"/>
+											<button class="btn btn-primary" type="submit">Inscription</button>
+										</form>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div> <!-- container -->
+			</nav>
+		</div>
+	</header>
 
-			
 	<!-- service section starts here -->
 	<section class="service text-center" id="service">
 		<div class="container">
@@ -78,47 +74,22 @@
 				<br>
 				<!-- The container for the list of example images -->
 				<div id="links"></div>
-                <br/>
-                <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
-                <div id="blueimp-gallery" class="blueimp-gallery">
-                    <!-- The container for the modal slides -->
-                    <div class="slides"></div>
-                    <!-- Controls for the borderless lightbox -->
-                    <h3 class="title"></h3>
-                    <a class="prev">‹</a>
-                    <a class="next">›</a>
-                    <a class="close">×</a>
-                    <a class="play-pause"></a>
-                    <ol class="indicator"></ol>
-                </div>
+				<br/>
+				<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+				<div id="blueimp-gallery" class="blueimp-gallery">
+					<!-- The container for the modal slides -->
+					<div class="slides"></div>
+					<!-- Controls for the borderless lightbox -->
+					<h3 class="title"></h3>
+					<a class="prev">‹</a>
+					<a class="next">›</a>
+					<a class="close">×</a>
+					<a class="play-pause"></a>
+					<ol class="indicator"></ol>
+				</div>
 			</div>
 		</div>
 	</section><!-- end of service section -->
-
-
-    <!-- The modal dialog, which will be used to wrap the lightbox content -->
-    <!--div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title"></h4>
-                </div>
-                <div class="modal-body next"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default pull-left prev">
-                        <i class="glyphicon glyphicon-chevron-left"></i>
-                        Previous
-                    </button>
-                    <button type="button" class="btn btn-primary next">
-                        Next
-                        <i class="glyphicon glyphicon-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div-->
 
 	<!-- map section -->
 	<section class="api-map" id="contact">
@@ -188,20 +159,14 @@
 	<script src="../public/js/jquery-2.1.1.js"></script>
     <script src="../public/js/bootstrap.min.js"></script>
 
-    <!-- Google Maps API-->
-	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="../public/js/gmaps.js"></script>
-	<script src="../public/js/smoothscroll.js"></script>
-	<script src="../public/js/custom.js"></script>
-
     <!-- Blueimp Gallery-->
-	<script src="https://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> <!-- important-->
-    <script src="../public/js/blueimp-gallery.js"></script> <!-- important-->
+	<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> <!-- important-->
+	<script src="../public/js/blueimp-gallery.js"></script> <!-- important-->
     <script src="../public/js/blueimp-gallery-indicator.js"></script> <!--fonctionnalité pour l'affichage des miniature en bas-->
     <script src="../public/js/jquery.blueimp-gallery.js"></script> <!-- important-->
     <script src="../public/js/demo.js"></script> <!-- Permet l'affichage des photos à partir de l'api flickr -->
 
-    <!-- Nos javascript -->
+	<!-- Nos javascript -->
 	<script src="../public/js/connexion.js"></script>
 	<script type="application/javascript">
 		$(document).ready(function () {

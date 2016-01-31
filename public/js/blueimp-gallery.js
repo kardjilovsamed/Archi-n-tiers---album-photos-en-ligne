@@ -183,7 +183,7 @@
         },
 
         carouselOptions: {
-            hidePageScrollbars: false,
+            hidePageScrollbars: true,
             toggleControlsOnReturn: false,
             toggleSlideshowOnSpace: false,
             enableKeyboardNavigation: false,
@@ -442,7 +442,8 @@
                 .removeClass(options.leftEdgeClass)
                 .removeClass(options.rightEdgeClass);
             if (options.hidePageScrollbars) {
-                document.body.style.overflow = this.bodyOverflowStyle;
+                //document.body.style.overflow = this.bodyOverflowStyle;
+                document.body.style.overflow = 'scroll';
             }
             if (this.options.clearSlides) {
                 this.resetSlides();
