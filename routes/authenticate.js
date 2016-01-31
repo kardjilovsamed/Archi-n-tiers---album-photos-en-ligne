@@ -1,6 +1,8 @@
 /*jslint node: true */
 "use strict";
 
+// TODO : A virer si plus utile
+
 // API ROUTES -------------------
 
 // get an instance of the router for api routes

@@ -10,6 +10,7 @@
   "dependencies": {
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
+    "crypto": "0.0.3",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
@@ -18,6 +19,12 @@
     "mongoose": "^4.2.4",
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
+    "oauth2orize": "^1.2.1",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-http-bearer": "^1.0.1",
+    "passport-local": "^1.0.0",
+    "passport-oauth2-client-password": "^0.1.2",
     "password-hash": "^1.2.2",
     "serve-favicon": "~2.3.0",
     "interact.js": "~1.2.6"

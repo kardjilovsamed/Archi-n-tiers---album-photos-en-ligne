@@ -4,6 +4,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var passport = require('passport');
+var crypto = require('crypto');
+
 
 var database = require("./config/db");
 
@@ -37,6 +40,10 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     next();
 });
+
+app.use(passport.initialize());
+
+require('./config/passport');
 
 var routes = require('./routes/index.js');
 
