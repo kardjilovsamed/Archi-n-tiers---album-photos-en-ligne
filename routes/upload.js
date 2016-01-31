@@ -28,13 +28,20 @@ var upload = multer({ storage: storage,
 
 router.post('/',
     passport.authenticate('bearer', { session: false }),
-    upload.single('photos'), function (req, res, next) {
+    upload.single('files[]'), function (req, res, next) {
     // req.files is array of `photos` files
     // req.body will contain the text fields, if there were any
 
         if(req.file) {
             var photo = new Photo();
             photo.uri = req.file.path;
+            photo.tags = req.body.tags;
+            photo.owner = req.user.id;
+            photo.album = req.body.album;
+            photo.save(function (err) {
+                if(err)
+                    return res.json(err);
+            });
             return res.json(photo);
         } else {
             return res.json({message: "Veuillez choisir un fichier image ou video"});
