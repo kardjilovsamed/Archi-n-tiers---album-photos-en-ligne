@@ -79,7 +79,7 @@ li a.active{
 /*service area*/
 .service{
 	background: #fff repeat-y;
-	padding-bottom: 50px;
+	margin-bottom: 50px;
 }
 .service h2{
 	font-size: 50px;
