@@ -36,7 +36,9 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<button class="btn btn-default" type="submit" id="buttonDeco">Déconnexion</button>
+								<form class="form navbar-form" id="formDeco">
+									<button class="btn btn-default" type="submit" id="buttonDeco">Déconnexion</button>
+								</form>
 							</li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
@@ -196,7 +198,6 @@
 			</form>
 			-->
 
-
 			<!-- service section starts here -->
 			<section class="service text-center" id="service">
 				<div class="container">
@@ -218,15 +219,9 @@
 					</div>
 				</div>
 			</section><!-- end of service section -->
-
-
-
 		</div>
 	</section><!-- end of gallery section -->
 
-
-	
-		
 
     <!-- footer starts here -->
     <footer class="footer clearfix">
@@ -259,6 +254,7 @@
 	<script src="../public/js/dragAndDrop.js"></script>
 
 	<script src="../public/js/scriptExplorateur.js"></script>
+	<script src="../public/js/signUpIn.js"></script>
 
 	<!-- Blueimp Gallery-->
 	<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> <!-- important-->
@@ -266,15 +262,5 @@
 	<script src="../public/js/blueimp-gallery-indicator.js"></script> <!--fonctionnalité pour l'affichage des miniature en bas-->
 	<script src="../public/js/jquery.blueimp-gallery.js"></script> <!-- important-->
 
-
-	<script type="application/javascript">
-		$(document).ready(function () {
-
-			$("#buttonDeco").submit(function (event) {
-				window.localStorage.clear();
-			});
-		});
-	</script>
-	
 </body>
 </html>

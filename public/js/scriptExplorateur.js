@@ -1,10 +1,9 @@
 $(document).ready(function () {
 
-    getAlbums();
-
     var token = window.localStorage.getItem("token");
     var idAlbumRoot = window.localStorage.getItem("albumRoot");
 
+    getAlbums();
 
     $(document).on('click', '.breadcrumb li', function(){
         idAlbumRoot = $(this).attr('id');
