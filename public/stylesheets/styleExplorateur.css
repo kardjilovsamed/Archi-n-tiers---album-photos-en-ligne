@@ -22,9 +22,9 @@ body {
 
 img{
 	max-width: 100%;
-	height: auto;
+	width: 100%;
 	display:block;
-	margin: 10px 0 10px 0;
+	margin: 5px 0 10px 0;
 }
 
 .fa-lg {
@@ -33,4 +33,47 @@ img{
     vertical-align: -15%;
     text-align: center;
 	margin-top: 5px;
+}
+
+.breadcrumb {background: rgba(245, 245, 245, 0); border: 0px solid rgba(255, 255, 255, 1); border-radius: 0px; display: block;}
+.breadcrumb li {font-size: 23px;}
+.breadcrumb a {color: rgba(66, 139, 202, 1);}
+.breadcrumb a:hover {color: rgba(42, 100, 150, 1);}
+.breadcrumb>.active {color: rgba(0, 0, 0, 1);}
+.breadcrumb>li+li:before {color: rgba(204, 204, 204, 1); content: "\002F\00a0";}
+
+
+.drag-transparent{
+	opacity: 0.5;
+}
+
+.dropzone {
+	border: dashed 4px transparent;
+	border-radius: 4px;
+	transition: background-color 0.3s;
+}
+
+.drop-active {
+	border-color: #aaa;
+}
+
+.drop-target {
+	background-color: #29e;
+	border-color: #fff;
+	border-style: solid;
+}
+
+.drag-drop {
+	display: inline-block;
+	min-width: 40px;
+	padding: 2em 0.5em;
+	color: #fff;
+	-webkit-transform: translate(0px, 0px);
+	transform: translate(0px, 0px);
+	transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+	color: #000;
+	background-color: #4e4;
 }
