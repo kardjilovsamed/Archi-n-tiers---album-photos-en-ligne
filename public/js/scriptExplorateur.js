@@ -1,49 +1,24 @@
 $(document).ready(function () {
 
-   // getAlbums();
+    getAlbums();
 
-    var token = localStorage.getItem("token");
-    var idAlbumRoot = localStorage.getItem("idAlbumRoot");
-
-
-
-    var isDragging = false;
-    $(".img-responsive")
-        .mousedown(function() {
-            isDragging = false;
-        })
-        .mousemove(function() {
-            isDragging = true;
-        })
-        .mouseup(function() {
-            var wasDragging = isDragging;
-            isDragging = false;
-            if (!wasDragging) {
-                $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
-                $('#imagemodal').modal('show'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
-            }
-        });
+    var token = window.localStorage.getItem("token");
+    var idAlbumRoot = window.localStorage.getItem("albumRoot");
 
 
     $(document).on('click', '.breadcrumb li', function(){
-
         idAlbumRoot = $(this).attr('id');
-
-        //$("#explorateur").empty();
-        //getAlbums();
-
-
+        $("#foldersRow").empty();
+        $("#imagesRow").empty();
+        getAlbums();
         while($('#breadcrumb').children().last().attr('id') != $(this).attr('id')){
             $('#breadcrumb').children().last().remove();
         }
-
-
         var foldernameFormer = $('#breadcrumb').children().last().text();
         var folderIdFormer = $('#breadcrumb').children().last().attr('id');
 
         $('#breadcrumb').children().last().remove();
         $("#breadcrumb").append( '<li id="' + folderIdFormer + '" class="active">' + foldernameFormer + '</li>');
-
 
     });
 
@@ -51,24 +26,39 @@ $(document).ready(function () {
 
         idAlbumRoot = $(this).attr('id');
 
-
         var foldernameFormer = $('#breadcrumb li.active').text();
         var folderIdFormer = $('#breadcrumb li.active').attr('id');
 
         $('#breadcrumb li.active').remove();
-
         $('#breadcrumb').append( '<li id="' + folderIdFormer + '"><a href="#" class="breadcrumbLink">' + foldernameFormer + '</a></li>');
-
         $("#breadcrumb").append( '<li id="' + idAlbumRoot + '" class="active">' + $(this).find('a:first').text() + '</li>');
 
+        $("#foldersRow").empty();
+        $("#imagesRow").empty();
 
-        //$("#explorateur").empty();
-
-        //getAlbums();
+        getAlbums();
 
         return false;
     });
 
+    $(document).on('click', '.albumParent', function(){
+
+        idAlbumRoot = $(this).attr('id');
+
+        $('#breadcrumb').children().last().remove();
+        var foldernameFormer = $('#breadcrumb').children().last().text();
+        var folderIdFormer = $('#breadcrumb').children().last().attr('id');
+        $('#breadcrumb').children().last().remove();
+        $("#breadcrumb").append( '<li id="' + folderIdFormer + '" class="active">' + foldernameFormer + '</li>');
+
+
+        $("#foldersRow").empty();
+        $("#imagesRow").empty();
+        getAlbums();
+
+
+        return false;
+    });
 
     $("#addButton").click(function(){
 
@@ -77,7 +67,7 @@ $(document).ready(function () {
         var folderId = "folderId";
 
         if (folderName != null) {
-            $("#explorateur").prepend( '<div id="' + folderId + '" class="col-md-2 album dropzone draggable drag-drop yes-drop">' +
+            $("#foldersRow").prepend( '<div id="' + folderId + '" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">' +
                                            '<a href="onvera.com">' +
                                                 '<i class="fa fa-folder fa-lg"></i><br/>' + folderName +
                                             '</a>' +
@@ -90,25 +80,33 @@ $(document).ready(function () {
     function getAlbums() {
         $.ajax({
                 type: "GET",
-                url: "/albums/" + idAlbumRoot,
+                url: "/albums/" + idAlbumRoot + '?access_token='+ token,
                 dataType: "json",
                 encode: true
             })
             .success(function (data) {
-                alert("Success");
 
                 $.each(data, function (index, item) {
 
                     var lienAlbumEnfant = item.uri;
 
-
-                    $("#explorateur").append( '<div class="col-md-2">' +
+                    $("#foldersRow").append( '<div class="col-xs-6 col-md-2">' +
                                                     '<a href="' + item.id + '" class="album"> ' +
                                                         '<i class="fa fa-folder fa-lg"></i><br/>' + item.nom +
                                                     '</a>' +
                                                 '</div>')
 
                 });
+
+                var lienParent = data.parentAlbum.uri;
+
+                if(lienParent){
+                    $("#explorateur").prepend(  '<div id="' + data.parentAlbum.id + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
+                                                    '<a href="onvera.com">' +
+                                                        '<i class="fa fa-folder fa-lg"></i><br/>' + data.parentAlbum.name +
+                                                    '</a>' +
+                                                '</div>' );
+                }
 
                 getImages();
 
@@ -122,7 +120,7 @@ $(document).ready(function () {
 
         $.ajax({
                 type: "GET",
-                url: "/photos/test",
+                url: '/albums/' + idAlbumRoot + '/content?access_token=' + token,
                 dataType: "json",
                 encode: true
             })
@@ -134,7 +132,7 @@ $(document).ready(function () {
                     var lienImageGrand = item.uri;
                     var lienImage = item.uri;
 
-                    $("#explorateur").append( '<div class="col-md-2">' +
+                    $("#imagesRow").append( '<div class="col-xs-6 col-md-2">' +
                                                     '<a href="' + lienImageGrand + '" > ' +
                                                         '<img src="' + lienImage + '" class="img-responsive"/>' +
                                                     '</a>' +
