@@ -29,7 +29,8 @@ $(document).ready(function () {
             async: false,
             success: function(data){
                 window.location="/a";
-                window.localStorage.setItem("albumRoot", data.albumRoot)
+                window.localStorage.setItem("token", data.token);
+                window.localStorage.setItem("albumRoot", data.albumRoot);
             },
             error: function(data) {
                 alert("Votre mot de passe ou votre email est incorrect.");
