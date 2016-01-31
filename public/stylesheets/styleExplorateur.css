@@ -85,3 +85,8 @@ img{
 .footer{
 	margin-top: 50px;
 }
+
+.modal {
+	overflow: auto;
+	color: #333;
+}

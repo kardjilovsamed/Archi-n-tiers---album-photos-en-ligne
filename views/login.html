@@ -13,9 +13,12 @@
 	<link href="../public/stylesheets/styleExplorateur.css" rel="stylesheet"/>
 	<link href="../public/stylesheets/style.css" rel="stylesheet"/>
 
+	<link rel="stylesheet" href="../public/stylesheets/blueimp-gallery.min.css">
+	<link rel="stylesheet" href="../public/stylesheets/blueimp-gallery-indicator.css">
+
 </head>
 <body>
-	<header class="top-header">
+	<header class="top-header" style="position: static">
 		<div class="bs-example">
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle for mobile display -->
@@ -81,22 +84,25 @@
 						</a>
 					</div>
 					<div id="sdvsdv353" class="col-md-2 draggable drag-drop yes-drop">
-						<a href="#" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
+
+
+
 					<div id="65165616" class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="#" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="#" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="#"  ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" data-gallery class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" data-gallery  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
 						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
@@ -138,6 +144,7 @@
 
 				<div id="parametresDossier" class="col-md-4" >
 					<h3>Propriétés du dossier : </h3>
+
 					<form class="form-horizontal">
 						<fieldset>
 							<!-- Text input-->
@@ -179,26 +186,79 @@
 				</div>
 			</div>
 
+			<!--
+			<form action="http://localhost:3000/upload?access_token=8f27973fcbacd0be01a2849dbaf1e24d2f9ba73d4cd1437d2435d4b970ff4acf"
+				  method="post" enctype="multipart/form-data">
+				<input type="hidden" name="album" value="56ae2ae81bfd099c5fb35257">
+				<input type="text" name="tags"/>
+				<input type="file" name="files[]" />
+				<input type="submit"/>
+			</form>
+			-->
 
-			<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-							<h4 class="modal-title" id="myModalLabel">Image preview</h4>
-						</div>
-						<div class="modal-body">
-							<img src="" id="imagepreview" class="img-responsive" >
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			<!-- service section starts here -->
+			<section class="service text-center" id="service">
+				<div class="container">
+					<div class="row">
+						<!-- The container for the list of example images -->
+						<div id="links"></div>
+						<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+						<div id="blueimp-gallery" class="blueimp-gallery">
+							<!-- The container for the modal slides -->
+							<div class="slides"></div>
+							<!-- Controls for the borderless lightbox -->
+							<h3 class="title"></h3>
+							<a class="prev">‹</a>
+							<a class="next">›</a>
+							<a class="close">×</a>
+							<a class="play-pause"></a>
+							<ol class="indicator"></ol>
 						</div>
 					</div>
 				</div>
-			</div>
+			</section><!-- end of service section -->
+
+
 
 		</div>
 	</section><!-- end of gallery section -->
+
+
+	<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+	<div id="blueimp-gallery" class="blueimp-gallery">
+		<!-- The container for the modal slides -->
+		<div class="slides"></div>
+		<!-- Controls for the borderless lightbox -->
+		<h3 class="title"></h3>
+		<a class="prev">‹</a>
+		<a class="next">›</a>
+		<a class="close">×</a>
+		<a class="play-pause"></a>
+		<ol class="indicator"></ol>
+		<!-- The modal dialog, which will be used to wrap the lightbox content -->
+		<div class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" aria-hidden="true">&times;</button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body next"></div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default pull-left prev">
+							<i class="glyphicon glyphicon-chevron-left"></i>
+							Previous
+						</button>
+						<button type="button" class="btn btn-primary next">
+							Next
+							<i class="glyphicon glyphicon-chevron-right"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 		
 
@@ -234,6 +294,13 @@
 	<script src="../public/js/dragAndDrop.js"></script>
 
 	<script src="../public/js/scriptExplorateur.js"></script>
+
+	<!-- Blueimp Gallery-->
+	<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script> <!-- important-->
+	<script src="../public/js/blueimp-gallery.js"></script> <!-- important-->
+	<script src="../public/js/blueimp-gallery-indicator.js"></script> <!--fonctionnalité pour l'affichage des miniature en bas-->
+	<script src="../public/js/jquery.blueimp-gallery.js"></script> <!-- important-->
+
 
 	<script type="application/javascript">
 		$(document).ready(function () {
