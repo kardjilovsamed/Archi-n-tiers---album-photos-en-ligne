@@ -29,8 +29,8 @@ router.get('/:id', function (req, res, next) {
 });
 
 /* GET /photos/albumId */
-router.get('/:allbumId', function (req, res, next) {
-    Photo.findByAlbumId(req.params.album, function(err, photo) {
+router.get('/:albumId', function (req, res, next) {
+    Photo.findByAlbumId(req.params.albumId, function(err, photo) {
         if (err) return next(err);
         res.json(photo);
     });

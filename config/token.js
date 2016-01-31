@@ -3,5 +3,5 @@
 
 module.exports = {
     'secret': 'test',
-    'tokenLife': 3600
+    'tokenLife': 36000
 };
