@@ -79,28 +79,28 @@ $(document).ready(function () {
     function getAlbums() {
         $.ajax({
                 type: "GET",
-                url: "/albums/" + idAlbumRoot + '?access_token='+ token,
+                url: "/albums/" + idAlbumRoot + '/content?access_token='+ token,
                 dataType: "json",
                 encode: true
             })
             .success(function (data) {
 
-                $.each(data, function (index, item) {
+                $.each(data.albums, function (index, item) {
 
                     var lienAlbumEnfant = item.uri;
 
                     $("#foldersRow").append( '<div class="col-xs-6 col-md-2">' +
-                                                    '<a href="' + item.id + '" class="album"> ' +
+                                                    '<a href="' + item._id + '" id="' + item._id + '" class="album"> ' +
                                                         '<i class="fa fa-folder fa-lg"></i><br/>' + item.nom +
                                                     '</a>' +
                                                 '</div>')
 
                 });
 
-                var lienParent = data.parentAlbum.uri;
+                var lienParent = data.parentAlbum._id;
 
                 if(lienParent){
-                    $("#explorateur").prepend(  '<div id="' + data.parentAlbum.id + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
+                    $("#explorateur").prepend(  '<div id="' + data.parentAlbum._id + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
                                                     '<a href="onvera.com">' +
                                                         '<i class="fa fa-folder fa-lg"></i><br/>' + data.parentAlbum.name +
                                                     '</a>' +
@@ -126,7 +126,7 @@ $(document).ready(function () {
             .success(function (data) {
                 alert("Success");
 
-                $.each(data, function (index, item) {
+                $.each(data.images, function (index, item) {
 
                     var lienImageGrand = item.uri;
                     var lienImage = item.uri;

@@ -7,7 +7,7 @@ var User = require('../models/users');
 var regExpEmail = /\w+@\w+\.\w+/;
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', passport.authenticate('bearer', { session: false }), function(req, res, next) {
   User.find(function(err, users) {
     if (err) return next(err);
     res.json(users);
