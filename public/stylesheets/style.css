@@ -14,7 +14,6 @@ h1, h2{
 	font-weight: bold;
 }
 
-
 /*header area*/
 .top-header{
 	background: url(../img/pattern.jpg);
@@ -80,104 +79,13 @@ li a.active{
 /*service area*/
 .service{
 	background: #fff repeat-y;
+	padding-bottom: 50px;
 }
 .service h2{
 	font-size: 50px;
 	color: #000000;
 	margin-top: 0;
 	margin-bottom: 30px;
-}
-.service h4{
-	font-size: 24px;
-	color: #000000;
-	margin-top: 0;
-	margin-bottom: 70px;
-	display: block;
-}
-.single-service-img {
-  width: 205px;
-  height: 125px;
-  background: #fff;
-  position: relative;
-  left: 50%;
-  margin-left: -100px;
-}
-.single-service-img:before {
-  content: "";
-  position: absolute;
-  top: -42px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 102px solid transparent;
-  border-right: 104px solid transparent;
-  border-bottom: 42px solid #fff;
-}
-.single-service-img:after {
-  content: "";
-  position: absolute;
-  bottom: -42px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 102px solid transparent;
-  border-right: 102px solid transparent;
-  border-top: 42px solid #fff;
-  z-index: 10;
-}
-.service-img {
-  width: 200px;
-  height: 123px;
-  background: #3a9ecb;
-  position: relative;
-  top: 1px;
-  left: 2px;
-}
-.service-img:before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 100px solid transparent;
-  border-right: 100px solid transparent;
-  border-bottom: 40px solid #3a9ecb;
-}
-.service-img:after {
-  content: "";
-  position: absolute;
-  bottom: -39px;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 100px solid transparent;
-  border-right: 100px solid transparent;
-  border-top: 40px solid #3a9ecb;
-  z-index: 999;
-}
-.single-service h3{
-	margin-top: 60px;
-	color: #000000;
-	padding-bottom: 90px;
-}
-.service-img img.heart{
-	left: 20%;
-	top: 18%;
-}
-.service-img img.brain{
-	left: 26%;
-	top: 11%;
-}
-.service-img img.knee{
-	left: 38%;
-}
-.service-img img.bone{
-	left: 25%;
-	top: 14%;
-}
-.service-img img{
-	position: absolute;
 }
 
 /*contact section*/
@@ -277,10 +185,6 @@ li a.active{
 .footer{
 	background-color: #FFFFFF;
 }
-.footer-para{
-	margin: 0;
-	padding: 0;
-}
 .footer p{
 	font-size: 12px;
 	color: #000;
@@ -288,7 +192,6 @@ li a.active{
 	font-weight: 300;
 	margin: 0;
 	padding: 25px 0;
-
 }
 .footer a i.fa{
 	font-size: 24px;
@@ -298,11 +201,6 @@ li a.active{
 .footer a i.fa:hover{
 	color: #42b3e5;
 }
-
-.carousel-inner{
-	position: relative;
-}
-
 
 /******************************
 responsive area
@@ -318,16 +216,12 @@ responsive area
 	h2 {
   		font-size: 75px !important;
   	}
-  	h4 {
-  		font-size: 22px !important;
-  	}
   	.person-detail h3 {
   		font-size: 26px;
   	}
   	.person-detail p {
   		font-size: 12px;
   	}
-
 }
 
 /* sm */
@@ -339,9 +233,6 @@ responsive area
 	
 	h2 {
   		font-size: 70px !important;
-  	}
-  	h4 {
-  		font-size: 18px !important;
   	}
   	#map{
 		height: 1050px;
@@ -373,9 +264,6 @@ responsive area
 	h2 {
 	  font-size: 70px !important;
 	}
-	h4{
-  		font-size: 21px !important;
-  	}
 	.contact-info ul {
 	  margin-left: 4px;
 	}
