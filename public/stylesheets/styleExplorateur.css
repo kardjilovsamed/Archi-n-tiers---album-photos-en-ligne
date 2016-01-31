@@ -12,6 +12,10 @@ body {
 	text-align: center;
 }
 
+#parametresDossier{
+	text-align: center;
+}
+
 #addBtn{
 	font-size: 38px;
 }
@@ -76,4 +80,8 @@ img{
 .drag-drop.can-drop {
 	color: #000;
 	background-color: #4e4;
+}
+
+.footer{
+	margin-top: 50px;
 }

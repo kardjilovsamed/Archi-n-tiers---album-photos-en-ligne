@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>PictureInTheBox</title>
 	<link rel="stylesheet" href="../public/stylesheets/font-awesome.min.css">
 	<link rel="stylesheet" href="../public/stylesheets/bootstrap.min.css">
@@ -11,9 +11,36 @@
 	<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 	<link href="../public/stylesheets/styleExplorateur.css" rel="stylesheet"/>
+	<link href="../public/stylesheets/style.css" rel="stylesheet"/>
 
 </head>
 <body>
+	<header class="top-header">
+		<div class="bs-example">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle for mobile display -->
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Picture In The Box</a>
+					</div>
+					<!-- Content of the navbar -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<button class="btn btn-default" type="submit" id="buttonDeco">Déconnexion</button>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div> <!-- container -->
+			</nav>
+		</div>
+	</header>
 
 	<section>
 		<div class="container">
@@ -26,10 +53,9 @@
 	</section><!-- end of gallery section -->
 
 	<section>
-		<div class="container">
-			
+		<div class="container" id="affichageImage">
 			<div class="row" id="addBtn">
-				<button id="addButton" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"> Nouveau dossier</span></button>
+				<button id="addButton" type="button" class="btn btn-default" style="font-size:15px"><i class="fa fa-plus" aria-hidden="true"></i>Nouveau dossier</button>
 
 				<ol id="breadcrumb" class="breadcrumb">
 					<li id="id1"><a href="#" class="breadcrumbLink">Home</a>
@@ -39,132 +65,119 @@
 					<li id="id3" class="active">Library</li>
 				</ol>
 			</div>
-		
-			<div class="row">
-				<div id="explorateur" class="col-md-10 col-md-offset-1" >
 
+			<div class="row">
+				<div id="explorateur" class="col-md-8" >
 					<div id="58594561" class="col-md-2 album dropzone draggable drag-drop yes-drop">
-						<a href="onvera.com">
+						<a href="#">
 							<i class="fa fa-folder fa-lg"></i><br/>
 							texte trop bien
 						</a>
 					</div>
-
 					<div id="4343478" class="col-md-2 album dropzone draggable drag-drop yes-drop">
-						<a href="onvera.com">
+						<a href="#">
 							<i class="fa fa-folder fa-lg"></i><br/>
 							texte trop bien 2 !
 						</a>
 					</div>
-
 					<div id="sdvsdv353" class="col-md-2 draggable drag-drop yes-drop">
-						<a href="onvera.com" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
-
-
 					<div id="65165616" class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
-					</div>
-
-					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
 					<div class="col-md-2 photo draggable drag-drop yes-drop">
-						<a href="onvera.com"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+						<a href="#" class=" photo" ><img src="../public/img/a.jpg" class="img-responsive"/></a>
 					</div>
-
-
-					
+					<div class="col-md-2 photo draggable drag-drop yes-drop">
+						<a href="#"  class=" photo"><img src="../public/img/a.jpg" class="img-responsive"/></a>
+					</div>
 				</div>
-			</div>
-			
-			
-			<div class="row" id="proprietes">
-				<div class="col-md-10 col-md-offset-1" >
+
+				<div id="parametresDossier" class="col-md-4" >
 					<h3>Propriétés du dossier : </h3>
 					<form class="form-horizontal">
 						<fieldset>
-						  <!-- Text input-->
-						  <div class="form-group">
-							<label class="col-md-4 control-label" for="iauteur">Titre :</label>
-							<div class="col-md-4">
-							  <input id="iauteur" name="fauteur" placeholder="Titre" class="form-control input-md" type="text">
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="control-label" for="iauteur">Titre :</label>
+								<div class="col-md-10 col-md-offset-1 ">
+									<input id="iauteur" name="fauteur" placeholder="Titre" class="form-control input-md" type="text">
+								</div>
 							</div>
-						  </div>
 
-						  <!-- Textarea -->
-						  <div class="form-group">
-							<label class="col-md-4 control-label" for="idescription">Description :</label>
-							<div class="col-md-4">
-							  <textarea id="idescription" class="form-control" name="fdescription" placeholder="Ajoutez votre description"></textarea>
+							<!-- Textarea -->
+							<div class="form-group">
+								<label class="control-label" for="idescription">Description :</label>
+								<div class="col-md-10 col-md-offset-1 ">
+									<textarea id="idescription" class="form-control" name="fdescription" placeholder="Ajoutez votre description"></textarea>
+								</div>
 							</div>
-						  </div>
-						  
-						  <!-- Textarea -->
-						  <div class="form-group">
-							<label class="col-md-4 control-label" for="ipartage">Partager avec :</label>
-							<div class="col-md-4">
-							  <textarea id="ipartage" class="form-control" name="fdescription" placeholder="Faudra modifier ici le délire"></textarea>
-							</div>
-						  </div>
-						  
-						  <!-- Text input-->
-						  <div class="form-group">
-							<label class="col-md-4 control-label" for="ivisibilite">Visibilité :</label>
-							<div class="col-md-4">
-								<input id="ivisibilite" checked data-toggle="toggle" data-on="Public" data-off="Privé" data-onstyle="success" data-offstyle="danger" type="checkbox">
-							</div>
-						  </div>
 
-						  <INPUT VALUE="Sauvegarder" TYPE="SUBMIT" class="btn btn-success">
+							<!-- Textarea -->
+							<div class="form-group">
+								<label class="control-label" for="ipartage">Partager avec :</label>
+								<div class="col-md-10 col-md-offset-1 ">
+									<textarea id="ipartage" class="form-control" name="fdescription" placeholder="Faudra modifier ici le délire"></textarea>
+								</div>
+							</div>
+
+							<!-- Text input-->
+							<div class="form-group">
+								<label class="control-label" for="ivisibilite">Visibilité :</label>
+								<div class="col-md-10 col-md-offset-1 ">
+									<input id="ivisibilite" checked data-toggle="toggle" data-on="Public" data-off="Privé" data-onstyle="success" data-offstyle="danger" type="checkbox">
+								</div>
+							</div>
+
+							<INPUT VALUE="Sauvegarder" TYPE="SUBMIT" class="btn btn-success">
 
 						</fieldset>
 					</form>
 				</div>
 			</div>
-
 
 
 			<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -184,8 +197,6 @@
 				</div>
 			</div>
 
-
-
 		</div>
 	</section><!-- end of gallery section -->
 	
@@ -200,10 +211,11 @@
                 </div>
 
                 <div class="col-xs-6 text-right">
-                    <a href=""><i class="fa fa-facebook"></i></a>
-                    <a href=""><i class="fa fa-twitter"></i></a>
-                    <a href=""><i class="fa fa-skype"></i></a>
-                </div>
+					<a href="https://www.facebook.com/telecomsaintetienne/?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
+					<a href="https://twitter.com/TelecomStE" target="_blank"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.linkedin.com/edu/school?id=21197&trk=edu-cp-title"><i class="fa fa-linkedin"></i></a>
+					<a href="https://www.google.fr/maps/place/T%C3%A9l%C3%A9com+Saint-%C3%89tienne/@45.4523179,4.3870443,18.08z/data=!4m2!3m1!1s0x47f5a97270997f73:0xc8d67b5196a79919?hl=fr" target="_blank"><i class="fa fa-map-marker"></i></a>
+				</div>
             </div>
         </div>
     </footer>
@@ -222,6 +234,15 @@
 	<script src="../public/js/dragAndDrop.js"></script>
 
 	<script src="../public/js/scriptExplorateur.js"></script>
+
+	<script type="application/javascript">
+		$(document).ready(function () {
+
+			$("#buttonDeco").submit(function (event) {
+				window.localStorage.clear();
+			});
+		});
+	</script>
 	
 </body>
 </html>
