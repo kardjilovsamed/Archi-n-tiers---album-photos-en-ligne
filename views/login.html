@@ -33,7 +33,9 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
-								<button class="btn btn-default" type="submit" id="buttonDeco">Déconnexion</button>
+								<form class="form navbar-form" id="formDeco">
+									<button class="btn btn-default" type="submit" id="buttonDeco">Déconnexion</button>
+								</form>
 							</li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
@@ -233,15 +235,7 @@
 	<script src="../public/js/dragAndDrop.js"></script>
 
 	<script src="../public/js/scriptExplorateur.js"></script>
+	<script src="../public/js/signUpIn.js"></script>
 
-	<script type="application/javascript">
-		$(document).ready(function () {
-
-			$("#buttonDeco").submit(function (event) {
-				window.localStorage.clear();
-			});
-		});
-	</script>
-	
 </body>
 </html>

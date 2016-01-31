@@ -30,11 +30,39 @@ $(document).ready(function () {
             success: function(data){
                 window.location="/a";
                 window.localStorage.setItem("token", data.access_token);
-                window.localStorage.setItem("albumRoot", data.email);
+                //window.localStorage.setItem("albumRoot", data.email);
             },
             error: function(data) {
                 alert("Votre mot de passe ou votre email est incorrect.");
             }
+        })
+    });
+
+    /*$(document).ready(function () {
+        $("#buttonDeco").submit(function (event) {
+            event.preventDefault();
+            $.ajax({
+                success: function(data){
+                    window.localStorage.clear();
+                    window.location="/";
+                }
+            })
+        });
+    });*/
+});
+
+$(document).ready(function () {
+    $("#formDeco").submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            success: function(data){
+                window.localStorage.clear();
+                window.location="/";
+            },
+            error: function (data) {
+                alert("error");
+            }
+
         })
     });
 });
