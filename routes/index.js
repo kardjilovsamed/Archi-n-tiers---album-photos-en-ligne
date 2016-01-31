@@ -66,4 +66,8 @@ router.use('/albums', require('./albums'));
 router.use('/photos', require('./photos'));
 router.use('/upload', require('./upload'));
 
+/*router.get('/img/', function(req, res) {
+
+});*/
+
 module.exports = router;

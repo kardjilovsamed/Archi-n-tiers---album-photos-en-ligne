@@ -48,7 +48,7 @@ require('./config/passport');
 var routes = require('./routes/index.js');
 
 app.use("/public", express.static(path.join(__dirname, 'public')));
-app.use("/photos", express.static(path.join(__dirname, 'photos')));
+app.use("/images", express.static(path.join(__dirname, 'photos')));
 
 
 app.use('/', routes);

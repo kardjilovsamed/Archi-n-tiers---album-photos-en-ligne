@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 
 var Photo = require('../models/photos');
+var path = require('path');
 
 /* GET /photos/test */
 router.get('/test', function(req, res, next) {
@@ -24,17 +25,17 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function (req, res, next) {
     Photo.findById(req.params.id, function(err, photo) {
         if (err) return next(err);
-        res.json(photo);
+        res.sendFile(path.resolve(photo.uri));
     });
 });
 
-/* GET /photos/albumId */
-router.get('/:albumId', function (req, res, next) {
-    Photo.findByAlbumId(req.params.albumId, function(err, photo) {
+/* GET /photos/album/albumId */
+/*router.get('/album/:albumId', function (req, res, next) {
+    Photo.find({album: req.params.albumId}, function(err, photo) {
         if (err) return next(err);
         res.json(photo);
     });
-});
+});*/
 
 /* POST /photos */
 router.post('/', function (req, res, next) {
