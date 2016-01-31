@@ -12,6 +12,10 @@ body {
 	text-align: center;
 }
 
+#parametresDossier{
+	text-align: center;
+}
+
 #addBtn{
 	font-size: 38px;
 }
