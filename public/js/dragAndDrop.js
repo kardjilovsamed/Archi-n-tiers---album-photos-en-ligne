@@ -22,7 +22,7 @@ interact('.draggable')
         inertia: true,
         // keep the element within the area of it's parent
         restrict: {
-            restriction: "parent",
+            //restriction: "parent",
             endOnly: true,
             elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
         },
@@ -108,7 +108,6 @@ interact('.dropzone').dropzone({
         var draggableElement = event.relatedTarget;
         var dropzoneElement = event.target;
 
-        alert("coucou");
         draggableElement.style.display = "none";
 
         //alert("dossier : " + dropzoneElement.id + "\nImage: " + draggableElement.id);
@@ -119,4 +118,3 @@ interact('.dropzone').dropzone({
         event.target.classList.remove('drop-target');
     }
 });
-
