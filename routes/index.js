@@ -3,6 +3,7 @@ var router = express.Router();
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require("../config/token");
 var oauth2 = require('../config/oauth2');
+var passport            = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -65,6 +66,10 @@ router.use('/users', require('./users'));
 router.use('/albums', require('./albums'));
 router.use('/photos', require('./photos'));
 router.use('/upload', require('./upload'));
+
+router.get('/profile', passport.authenticate('bearer', { session: false }), function (req, res, next) {
+    return res.json(req.user);
+});
 
 /*router.get('/img/', function(req, res) {
 
