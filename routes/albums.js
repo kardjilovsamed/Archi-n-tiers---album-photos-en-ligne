@@ -1,16 +1,6 @@
-/*jslint node: true */
-"use strict";
-
 var express = require('express');
 var passport = require('passport');
 
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'photos/')
-    }
-});
-var upload = multer({ storage: storage });
 var router = express.Router();
 
 var Album = require('../models/albums');
@@ -44,16 +34,6 @@ router.post('/', passport.authenticate('bearer', { session: false }), function (
     Album.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
-    });
-});
-
-/* POST /albums/id/upload */
-router.post('/:id/upload', passport.authenticate('bearer', { session: false }), upload.array('photos', 8), function (req, res, next) {
-    Album.findById(req.params.id, function(err, album) {
-        if (err) return next(err);
-        var owner = album.owner;
-
-        res.json(album);
     });
 });
 

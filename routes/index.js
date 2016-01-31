@@ -59,5 +59,6 @@ router.post('/authenticate', oauth2.token);
 router.use('/users', require('./users'));
 router.use('/albums', require('./albums'));
 router.use('/photos', require('./photos'));
+router.use('/upload', require('./upload'));
 
 module.exports = router;
