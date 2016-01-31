@@ -151,23 +151,12 @@
     <!-- Blueimp Gallery-->
 	<script src="../public/js/jquery.blueimp-gallery.min.js"></script> <!-- important-->
 	<script src="../public/js/blueimp-gallery.js"></script> <!-- important-->
-    <script src="../public/js/blueimp-gallery-indicator.js"></script> <!--fonctionnalité pour l'affichage des miniature en bas-->
+    <script src="../public/js/blueimp-gallery-indicator.js"></script> <!--fonctionnalité pour l'affichage des boutons/miniatures-->
     <script src="../public/js/jquery.blueimp-gallery.js"></script> <!-- important-->
     <script src="../public/js/demo.js"></script> <!-- Permet l'affichage des photos à partir de l'api flickr -->
 
 	<!-- Nos javascript -->
 	<script src="../public/js/connexion.js"></script>
 
-	<!--Permet d'animer l'affichage des boutons -->
-    <script>
-        document.getElementById('links').onclick = function (event) {
-            event = event || window.event;
-            var target = event.target || event.srcElement,
-                    link = target.src ? target.parentNode : target,
-                    options = {index: link, event: event},
-                    links = this.getElementsByTagName('a');
-            blueimp.Gallery(links, options);
-        };
-    </script>
 </body>
 </html>
