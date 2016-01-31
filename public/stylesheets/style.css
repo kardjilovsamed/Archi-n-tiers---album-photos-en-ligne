@@ -58,6 +58,11 @@ li a.active{
 #buttonInscrip {
 	margin-top: 8px;
 }
+
+#buttonDeco {
+	margin-top: 8px;
+}
+
 .navbar-form {
 	border-bottom: 0 solid transparent;
 	border-top: 0 solid transparent;
@@ -173,7 +178,6 @@ li a.active{
 }
 .service-img img{
 	position: absolute;
-  	
 }
 
 /*contact section*/
@@ -252,10 +256,6 @@ li a.active{
 	text-align: right;
 }
 
-.navbar-nav .open .dropdown-menu {
-	background-color: #FFFFFF;
-}
-
 .contact-form input.submit-btn{
 	width: 180px;
 	height: 50px;
@@ -273,27 +273,10 @@ li a.active{
 	padding-right: 40px;
 }
 
-/*gmap*/
-#map{
-	height: 830px;
-}
-.map{
-	position: relative;
-	overflow: hidden;
-}
-.contact{
-	position: absolute;
-	width: 100%;
-	height: 830px;
-	left: 0;
-	margin-top: -830px;
-	background: rgba(0, 0, 0, 0.51);
-}
-.contact-caption{
-	margin-top: 120px;
-}
-
 /*footer*/
+.footer{
+	background-color: #FFFFFF;
+}
 .footer-para{
 	margin: 0;
 	padding: 0;
