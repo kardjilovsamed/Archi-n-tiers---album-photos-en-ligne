@@ -149,7 +149,7 @@ Any of these
 
 
 
-###Upload :
+###Upload
 
 ####POST /upload
 
@@ -171,7 +171,7 @@ Any of these
 
 
 
-###Photos :
+###Photos
 
 ####GET /photos
 
