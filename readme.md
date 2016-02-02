@@ -2,12 +2,12 @@
 
 ##Index
 
-[**Signup**](#signup)
-[**Login**](#login)
-[**Profile**](#profile)
-[**Albums**](#albums)
-[**Upload**](#upload)
-[**Photos**](#photos)
+[* * Signup* * ](#signup)
+[* * Login* * ](#login)
+[* * Profile* * ](#profile)
+[* * Albums* * ](#albums)
+[* * Upload* * ](#upload)
+[* * Photos* * ](#photos)
 
 ##Endpoints
 
@@ -16,8 +16,8 @@
 ####POST /signup
 
 #####body : 
-*email
-*password
+* email
+* password
 
 
 
@@ -26,17 +26,17 @@
 ####POST /authenticate
 
 #####body : 
-*grant_type : password OU refresh_token
-*client_id : webClient
-*client_secret : secret
-*username : email de l'utilisateur
-*password : password
+* grant_type : password OU refresh_token
+* client_id : webClient
+* client_secret : secret
+* username : email de l'utilisateur
+* password : password
 
 #####Return : 
-*access_token
-*refresh_token
-*expires_in
-*token_type
+* access_token
+* refresh_token
+* expires_in
+* token_type
 
 
 
@@ -45,13 +45,13 @@
 ####GET /profile
 
 #####params :
-*access_token
+* access_token
 
 #####Return : 
-*email
-*password
-*albumRoot
-*albums
+* email
+* password
+* albumRoot
+* albums
 
 
 
@@ -60,92 +60,92 @@
 ####GET /albums
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*List of albums
+* List of albums
 
 
 ####GET /albums/{id}
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*nom
-*description
-*tags
-*owner : User id
-*parentAlbum : Album id
-*permissions : User id
+* nom
+* description
+* tags
+* owner : User id
+* parentAlbum : Album id
+* permissions : User id
 
 
 ####GET /albums/{id}/content
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*current : current album specified by {id}
-*albums : list of children albums
-*photos : list of photos contained in that album
+* current : current album specified by {id}
+* albums : list of children albums
+* photos : list of photos contained in that album
 
 
 ####POST /albums/
 
 #####params :
-*access_token
+* access_token
 
 #####body :
-*nom : string
-*description : string
-*tags : string
-*parentAlbum : Album id
-*permissions : list of User id (not mandatory)
+* nom : string
+* description : string
+* tags : string
+* parentAlbum : Album id
+* permissions : list of User id (not mandatory)
 
 #####Return :
-*nom
-*description
-*tags
-*owner : User id
-*parentAlbum : Album id
-*permissions : User id
+* nom
+* description
+* tags
+* owner : User id
+* parentAlbum : Album id
+* permissions : User id
 
 
 ####PUT /albums/{id}
 
 #####params :
-*access_token
+* access_token
 
 #####body :
 Any of these
-*nom : string
-*description : string
-*tags : string
-*parentAlbum : Album id
-*permissions : list of User id
+* nom : string
+* description : string
+* tags : string
+* parentAlbum : Album id
+* permissions : list of User id
 
 #####Return :
-*nom
-*description
-*tags
-*owner : User id
-*parentAlbum : Album id
-*permissions : User id
+* nom
+* description
+* tags
+* owner : User id
+* parentAlbum : Album id
+* permissions : User id
 
 
 ####DELETE /albums/{id}
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*nom
-*description
-*tags
-*owner : User id
-*parentAlbum : Album id
-*permissions : User id
+* nom
+* description
+* tags
+* owner : User id
+* parentAlbum : Album id
+* permissions : User id
 
 
 
@@ -156,18 +156,18 @@ Any of these
 #####enctype : multipart/form-data
 
 #####params :
-*access_token
+* access_token
 
 #####body :
-*files[] : files to upload, must be of type image
-*tags : string
-*album : Album id => parent album
+* files[] : files to upload, must be of type image
+* tags : string
+* album : Album id => parent album
 
 #####Return :
-*tags : string
-*uri : string
-*owner : User id
-*album : Album id
+* tags : string
+* uri : string
+* owner : User id
+* album : Album id
 
 
 
@@ -176,56 +176,56 @@ Any of these
 ####GET /photos
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*list of Photos
+* list of Photos
 
 
 ####GET /photos/{id}
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*tags : string
-*uri : string
-*owner : User id
-*album : Album id
+* tags : string
+* uri : string
+* owner : User id
+* album : Album id
 
 
 ####GET /photos/{id}/img
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*image file specified in the Photo uri
+* image file specified in the Photo uri
 
 
 ####PUT /photos/{id}
 
 #####params :
-*access_token
+* access_token
 
 #####body :
-*tags : string
-*album : Album id
+* tags : string
+* album : Album id
 
 #####Return :
-*tags : string
-*uri : string
-*owner : User id
-*album : Album id
+* tags : string
+* uri : string
+* owner : User id
+* album : Album id
 
 
 ####DELETE /photos/{id}
 
 #####params :
-*access_token
+* access_token
 
 #####Return :
-*tags : string
-*uri : string
-*owner : User id
-*album : Album id
+* tags : string
+* uri : string
+* owner : User id
+* album : Album id
