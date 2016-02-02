@@ -2,12 +2,12 @@
 
 ##Index
 
-**[Signup](#signup)**
-**[Login](#login)**
-**[Profile](#profile)**
-**[Albums](#albums)**
-**[Upload](#upload)**
-**[Photos](#photos)**
+**[Signup](#signup)**  
+**[Login](#login)**  
+**[Profile](#profile)**  
+**[Albums](#albums)**  
+**[Upload](#upload)**  
+**[Photos](#photos)**  
 
 ##Endpoints
 
