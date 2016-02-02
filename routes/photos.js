@@ -25,6 +25,14 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function (req, res, next) {
     Photo.findById(req.params.id, function(err, photo) {
         if (err) return next(err);
+        res.json(photo);
+    });
+});
+
+/* GET /photos/id/img */
+router.get('/:id/img', function (req, res, next) {
+    Photo.findById(req.params.id, function(err, photo) {
+        if (err) return next(err);
         res.sendFile(path.resolve(photo.uri));
     });
 });
@@ -55,7 +63,7 @@ router.put('/:id', function (req, res, next) {
 
 /* DELETE /photos/:id */
 router.delete('/:id', function(req, res, next) {
-  Photo.findByIdAndRemove(req.params.id, req.body, function (err, photo) {
+  Photo.findByIdAndRemove(req.params.id, function (err, photo) {
     if (err) return next(err);
     res.json(photo);
   });

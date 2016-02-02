@@ -69,7 +69,7 @@ router.post('/:id', passport.authenticate('bearer', { session: false }), functio
 
 /* DELETE /albums/:id */
 router.delete('/:id', passport.authenticate('bearer', { session: false }), function(req, res, next) {
-  Album.findByIdAndRemove(req.params.id, req.body, function (err, album) {
+  Album.findByIdAndRemove(req.params.id, function (err, album) {
     if (err) return next(err);
     res.json(album);
   });
