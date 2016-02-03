@@ -6,6 +6,7 @@ var AlbumSchema = new mongoose.Schema({
     nom: String,
     description: String,
     tags: String,
+    private: {type: Boolean, default: false},
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'

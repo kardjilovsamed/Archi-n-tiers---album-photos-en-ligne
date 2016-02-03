@@ -18,7 +18,12 @@ router.get('/', passport.authenticate('bearer', { session: false }), function(re
 router.get('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
-        res.json(album);
+        if(album.owner == req.user.id || (album.permissions && album.permissions.indexOf(req.user._id) > -1)) {
+            res.json(album);
+        } else {
+            res.statusCode = 401;
+            return res.json({message: "Vous n'avez pas accès à cet album."});
+        }
     });
 });
 
@@ -26,16 +31,21 @@ router.get('/:id', passport.authenticate('bearer', { session: false }), function
 router.get('/:id/content', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
-        var content = {current: album};
-        Photo.find({album: req.params.id}, function(err, photos) {
-            if (err) return next(err);
-            content.photos = photos;
-            Album.find({parentAlbum: req.params.id}, function(err, albums) {
+        if(album.owner == req.user.id || (album.permissions && album.permissions.indexOf(req.user._id) > -1)) {
+            var content = {current: album};
+            Photo.find({album: req.params.id}, function(err, photos) {
                 if (err) return next(err);
-                content.albums = albums;
-                return res.json(content);
+                content.photos = photos;
+                Album.find({parentAlbum: req.params.id}, function(err, albums) {
+                    if (err) return next(err);
+                    content.albums = albums;
+                    return res.json(content);
+                });
             });
-        });
+        } else {
+            res.statusCode = 401;
+            return res.json({message: "Vous n'avez pas accès à cet album."});
+        }
     });
 });
 
@@ -51,27 +61,29 @@ router.post('/', passport.authenticate('bearer', { session: false }), function (
 
 /* PUT /albums/id */
 router.put('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
-    Album.findByIdAndUpdate(req.params.id, req.body, function(err, album) {
+    Album.findOneAndUpdate({'_id': req.params.id, owner: req.user.id}, req.body, {new: true}, function(err, album) {
         if (err) return next(err);
-        res.json(album);
-
-    });
-});
-
-/* POST /albums/id */
-router.post('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
-    Album.findById(req.params.id, req.body, function(err, album) {
-        if (err) return next(err);
-        res.json(album);
-
+        if(album) {
+            return res.json(album);
+        }
+        else {
+            res.statusCode = 401;
+            return res.json({message: "Partage loupe :p"});
+        }
     });
 });
 
 /* DELETE /albums/:id */
 router.delete('/:id', passport.authenticate('bearer', { session: false }), function(req, res, next) {
-  Album.findByIdAndRemove(req.params.id, function (err, album) {
+  Album.findOneAndRemove({'_id': req.params.id, owner: req.user.id}, function (err, album) {
     if (err) return next(err);
-    res.json(album);
+      if(album) {
+          return res.json(album);
+      }
+      else {
+          res.statusCode = 401;
+          return res.json({message: "Suppression loupee :p"});
+      }
   });
 });
 

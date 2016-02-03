@@ -8,7 +8,7 @@ var regExpEmail = /\w+@\w+\.\w+/;
 
 /* GET users listing. */
 router.get('/', passport.authenticate('bearer', { session: false }), function(req, res, next) {
-  User.find(function(err, users) {
+  User.find('id email', function(err, users) {
     if (err) return next(err);
     res.json(users);
   });
@@ -16,7 +16,7 @@ router.get('/', passport.authenticate('bearer', { session: false }), function(re
 
 /* GET /users/id */
 router.get('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
-    User.findById(req.params.id, function(err, user) {
+    User.findById(req.params.id, 'id email albumRoot', function(err, user) {
         if (err) return next(err);
         res.json(user);
     });

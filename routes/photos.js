@@ -7,11 +7,6 @@ var router = express.Router();
 var Photo = require('../models/photos');
 var path = require('path');
 
-/* GET /photos/test */
-router.get('/test', function(req, res, next) {
-    var photos = {truc: "bidule"};
-    res.json(photos);
-});
 
 /* GET photos listing. */
 router.get('/', function(req, res, next) {
