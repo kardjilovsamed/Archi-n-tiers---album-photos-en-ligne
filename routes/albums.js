@@ -65,8 +65,7 @@ router.put('/:id', passport.authenticate('bearer', { session: false }), function
         if (err) return next(err);
         if(album) {
             return res.json(album);
-        }
-        else {
+        } else {
             res.statusCode = 401;
             return res.json({message: "Partage loupe :p"});
         }
@@ -79,8 +78,7 @@ router.delete('/:id', passport.authenticate('bearer', { session: false }), funct
     if (err) return next(err);
       if(album) {
           return res.json(album);
-      }
-      else {
+      } else {
           res.statusCode = 401;
           return res.json({message: "Suppression loupee :p"});
       }

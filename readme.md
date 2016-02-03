@@ -2,12 +2,22 @@
 
 ##Index
 
+**[Install](#install)**  
+  
 **[Signup](#signup)**  
 **[Login](#login)**  
 **[Profile](#profile)**  
 **[Albums](#albums)**  
 **[Upload](#upload)**  
 **[Photos](#photos)**  
+
+##Install the project
+* Install nodejs v4.1.1
+* Install mongodb v3.0.7
+* run the command: $`npm install`
+* launch mongodb: $`mongod`
+* run the command: $`node createClient.js`, it will install the client used for the authentication
+* create a folder named **_photos_** in the root folder where app.js is
 
 ##Endpoints
 
