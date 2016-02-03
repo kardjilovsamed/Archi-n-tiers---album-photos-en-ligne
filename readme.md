@@ -11,7 +11,7 @@
 **[Upload](#upload)**  
 **[Photos](#photos)**  
 
-##Install the project
+##Install
 * Install nodejs v4.1.1
 * Install mongodb v3.0.7
 * run the command: $`npm install`
