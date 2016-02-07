@@ -108,5 +108,26 @@
 <!-- Nos javascript -->
 <script src="../public/js/signUpIn.js"></script>
 
+<script type="application/javascript">
+    $("#banane").click(function(){
+        var email = document.getElementById("rechercheAmi");
+        var token = window.localStorage.getItem("token");
+
+        $.ajax({
+            type: "GET",
+            url: "/users?email=" + email + "&access_token=" + token,
+            data: data,
+            dataType: "json",
+            encode: true,
+            success: function (data) {
+                alert(data.email);
+            },
+            error: function (data) {
+                alert("Impossible trouver l'utilisateur.");
+            }
+        })
+    });
+
+</script>
 </body>
 </html>
