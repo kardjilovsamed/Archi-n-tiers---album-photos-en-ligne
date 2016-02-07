@@ -176,6 +176,9 @@ Any of these
 #####Return :
 * tags : string
 * uri : string
+* url : string
+* urlThumb : string
+* private : boolean
 * owner : User id
 * album : Album id
 
@@ -200,6 +203,9 @@ Any of these
 #####Return :
 * tags : string
 * uri : string
+* url : string
+* urlThumb : string
+* private : boolean
 * owner : User id
 * album : Album id
 
