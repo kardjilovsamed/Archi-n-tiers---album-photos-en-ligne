@@ -29,9 +29,9 @@
                 <!-- Content of the navbar -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="login.html">Photo Personelle</a></li>
-                        <li><a href="partage.html">Photo Partagée</a></li>
-                        <li><a href="public.html">Photo Public</a></li>
+                        <li><a href="/a">Photo Personelle</a></li>
+                        <li><a href="/partage">Photo Partagée</a></li>
+                        <li><a href="/public">Photo Public</a></li>
                         <li>
                             <form class="form navbar-form" id="formDeco">
                                 <button class="btn btn-default" type="submit">Déconnexion</button>
@@ -48,10 +48,15 @@
 <section class="service text-center" id="service">
     <div class="container">
         <div class="row">
-            <div class="header-backup"></div>
             <div id="responseInscription"></div>
             <br/>
             <h2>Gallerie d'Image Publique</h2>
+
+            <form class="form-inline" id="recherche">
+                <input type="text" class="form-control" id="rechercheAmi" placeholder="Par utilisateurs">
+                <input type="text" class="form-control" id="rechercheMot" placeholder="Par mots clés">
+            </form>
+
             <!-- The container for the list of example images -->
             <div id="links"></div>
 
@@ -81,7 +86,7 @@
             <div class="col-xs-6 text-right">
                 <a href="https://www.facebook.com/telecomsaintetienne/?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
                 <a href="https://twitter.com/TelecomStE" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/edu/school?id=21197&trk=edu-cp-title"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/edu/school?id=21197&trk=edu-cp-title" target="_blank"><i class="fa fa-linkedin"></i></a>
                 <a href="https://www.google.fr/maps/place/Telecom+Saint+Etienne/@45.4523179,4.3870443,18.08z/data=!4m2!3m1!1s0x47f5a97270997f73:0xc8d67b5196a79919?hl=fr" target="_blank"><i class="fa fa-map-marker"></i></a>
             </div>
         </div>

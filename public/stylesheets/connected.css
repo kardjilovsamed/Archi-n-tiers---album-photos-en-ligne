@@ -74,14 +74,18 @@ li a.active{
 
 /*service area*/
 .service{
-    background: #fff repeat-y;
-    margin-bottom: 50px;
+    background-color: #b1b1b1;
+    padding-bottom: 50px;
 }
 .service h2{
     font-size: 50px;
     color: #000000;
-    margin-top: 0;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#recherche{
+    padding-bottom: 20px;
 }
 
 /*footer*/
