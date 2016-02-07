@@ -105,12 +105,54 @@ interact('.dropzone').dropzone({
     },
     ondrop: function (event) {
 
+        var token = window.localStorage.getItem("token");
+
         var draggableElement = event.relatedTarget;
         var dropzoneElement = event.target;
 
         draggableElement.style.display = "none";
 
-        //alert("dossier : " + dropzoneElement.id + "\nImage: " + draggableElement.id);
+        if(draggableElement.classList.contains('album')){
+
+            var sendInfo = {
+                parentAlbum: dropzoneElement.id
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: "/albums/" + draggableElement.id + '?access_token='+ token,
+                data: sendInfo,
+                dataType: "json",
+                encode: true,
+                success: function (data) {
+
+                },
+                error: function (data) {
+                    alert("Impossible de se connecter");
+                }
+            })
+
+        } else {
+            var sendInfo = {
+                album: dropzoneElement.id
+            };
+
+            $.ajax({
+                type: "PUT",
+                url: "/photos/" + draggableElement.id + '?access_token='+ token,
+                data: sendInfo,
+                dataType: "json",
+                encode: true,
+                success: function (data) {
+
+                },
+                error: function (data) {
+                    alert("Impossible de se connecter");
+                }
+            })
+        }
+
+
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback

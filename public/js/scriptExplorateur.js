@@ -3,9 +3,14 @@ $(document).ready(function () {
     var token = window.localStorage.getItem("token");
     var idAlbumRoot = window.localStorage.getItem("albumRoot");
 
+    var idAlbumRootLeVrai = idAlbumRoot;
+
+    $('#breadcrumb').children().last().attr('id', idAlbumRoot);
+
     getAlbums();
 
     $(document).on('click', '.breadcrumb li', function(){
+
         idAlbumRoot = $(this).attr('id');
         $("#foldersRow").empty();
         $("#imagesRow").empty();
@@ -29,8 +34,9 @@ $(document).ready(function () {
         var folderIdFormer = $('#breadcrumb li.active').attr('id');
 
         $('#breadcrumb li.active').remove();
+
         $('#breadcrumb').append( '<li id="' + folderIdFormer + '"><a href="#" class="breadcrumbLink">' + foldernameFormer + '</a></li>');
-        $("#breadcrumb").append( '<li id="' + idAlbumRoot + '" class="active">' + $(this).find('a:first').text() + '</li>');
+        $("#breadcrumb").append( '<li id="' + idAlbumRoot + '" class="active">' + $(this).text() + '</li>');
 
         $("#foldersRow").empty();
         $("#imagesRow").empty();
@@ -63,16 +69,39 @@ $(document).ready(function () {
 
         var folderName = prompt("Nom du nouveau dossier", "Nom");
 
-        var folderId = "folderId";
-
         if (folderName != null) {
-            $("#foldersRow").prepend( '<div id="' + folderId + '" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">' +
-                                           '<a href="onvera.com">' +
-                                                '<i class="fa fa-folder fa-lg"></i><br/>' + folderName +
-                                            '</a>' +
-                                        '</div>' );
-        }
 
+            var folderId = "folderId";
+
+            var sendInfo = {
+                nom: folderName,
+                private: true,
+                parentAlbum: idAlbumRoot
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/albums?access_token=" + token,
+                data: sendInfo,
+                dataType: "json",
+                encode: true,
+                success: function (data) {
+
+                    folderId = data._id;
+
+                    $("#foldersRow").prepend( '<div id="' + folderId + '" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">' +
+                        '<a href="onvera.com">' +
+                        '<i class="fa fa-folder fa-lg"></i><br/>' + folderName +
+                        '</a>' +
+                        '</div>' );
+
+                },
+                error: function (data) {
+                    alert("Impossible de se connecter");
+                }
+            })
+
+        }
 
     });
 
@@ -85,64 +114,128 @@ $(document).ready(function () {
             })
             .success(function (data) {
 
+
+                $("#inom").val(data.current.nom);
+                $("#idescription").val(data.current.description);
+
+
                 $.each(data.albums, function (index, item) {
 
                     var lienAlbumEnfant = item.uri;
 
-                    $("#foldersRow").append( '<div class="col-xs-6 col-md-2">' +
-                                                    '<a href="' + item._id + '" id="' + item._id + '" class="album"> ' +
+                    $("#foldersRow").append( '<div id="' + item._id + '" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">' +
+                                                    '<a href="#"> ' +
                                                         '<i class="fa fa-folder fa-lg"></i><br/>' + item.nom +
                                                     '</a>' +
                                                 '</div>')
 
+
+
                 });
 
-                var lienParent = data.parentAlbum._id;
+                $.each(data.photos, function (index, item) {
+
+                    var imageId = item._id;
+
+                    var lienImage = item.url;
+
+                    $("#imagesRow").append( '<div id="' + imageId + '" class="col-xs-6 col-md-2 draggable drag-drop yes-drop">' +
+                        '<a href="' + lienImage + '" data-gallery > ' +
+                        '<img src="' + lienImage + '" class="img-responsive"/>' +
+                        '</a>' +
+                        '</div>')
+
+                });
+
+
+                var lienParent = data.current.parentAlbum;
 
                 if(lienParent){
-                    $("#explorateur").prepend(  '<div id="' + data.parentAlbum._id + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
+                    $("#foldersRow").prepend(  '<div id="' + lienParent + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
                                                     '<a href="onvera.com">' +
-                                                        '<i class="fa fa-folder fa-lg"></i><br/>' + data.parentAlbum.name +
+                                                        '<i class="fa fa-folder fa-lg"></i><br/>' + '..' +
                                                     '</a>' +
                                                 '</div>' );
                 }
 
-                getImages();
 
             })
             .error(function (data) {
                 alert("Error, impossible de se connecter");
             });
+
     }
 
-    function getImages() {
+    // Post pour ajouter une image
+    $("#addImage").submit(function (event) {
+        event.preventDefault();
+
+        $("#imageAlbumRoot").attr("value", idAlbumRoot);
+
+        var $form = $(this);
+        var formdata = (window.FormData) ? new FormData($form[0]) : null;
+        var data = (formdata !== null) ? formdata : $form.serialize();
 
         $.ajax({
-                type: "GET",
-                url: '/albums/' + idAlbumRoot + '/content?access_token=' + token,
-                dataType: "json",
-                encode: true
-            })
-            .success(function (data) {
-                alert("Success");
+            url: "/upload?access_token=" + token,
+            type: "POST",
+            contentType: false, // obligatoire pour de l'upload
+            processData: false, // obligatoire pour de l'upload
+            dataType: 'json', // selon le retour attendu
+            data: data,
+            success: function (data) {
+                alert("Image ajouté avec succès");
 
-                $.each(data.images, function (index, item) {
+                var imageId = data._id;
+                var lienImage = data.url;
 
-                    var lienImageGrand = item.uri;
-                    var lienImage = item.uri;
+                $("#imagesRow").append( '<div id="' + imageId + '" class="col-xs-6 col-md-2 draggable drag-drop yes-drop">' +
+                    '<a href="' + lienImage + '" data-gallery > ' +
+                    '<img src="' + lienImage + '" class="img-responsive"/>' +
+                    '</a>' +
+                    '</div>')
 
-                    $("#imagesRow").append( '<div class="col-xs-6 col-md-2">' +
-                                                    '<a href="' + lienImageGrand + '" > ' +
-                                                        '<img src="' + lienImage + '" class="img-responsive"/>' +
-                                                    '</a>' +
-                                                '</div>')
+            },
+            error: function (data) {
+                alert("Impossible de se connecter");
+            }
+        })
+    });
 
-                });
-            })
-            .error(function (data) {
-                alert("Error, impossible de se connecter");
-            });
-    }
+    $("#validerInfoAlbum").click(function(){
+
+        var privateBool;
+
+        if($("#ivisibilite").parents('.off').length){
+            privateBool = false;
+        } else {
+            privateBool = true;
+        }
+
+        var sendInfo = {
+            nom: $("#inom").val(),
+            description: $("#idescription").val(),
+            private: privateBool
+        };
+
+        $.ajax({
+            type: "PUT",
+            url: "/albums/" + idAlbumRoot + '?access_token='+ token,
+            data: sendInfo,
+            dataType: "json",
+            encode: true,
+            success: function (data) {
+
+                alert("Paramètres enregistrés");
+
+            },
+            error: function (data) {
+                alert("Impossible de se connecter");
+            }
+        })
+
+    });
 
 });
+
 

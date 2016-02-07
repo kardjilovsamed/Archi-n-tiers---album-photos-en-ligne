@@ -63,11 +63,7 @@
 				<button id="addButton" type="button" class="btn btn-default" style="font-size:15px"><i class="fa fa-plus" aria-hidden="true"></i>Nouveau dossier</button>
 
 				<ol id="breadcrumb" class="breadcrumb">
-					<li id="id1"><a href="#" class="breadcrumbLink">Home</a>
-					</li>
-					<li id="id2"><a href="#" class="breadcrumbLink">Library</a>
-					</li>
-					<li id="id3" class="active">Library</li>
+					<li id="" class="active">Home</li>
 				</ol>
 			</div>
 
@@ -75,70 +71,11 @@
 				<div id="explorateur" class="col-md-8" >
 
 					<div id="foldersRow" class="row">
-						<div id="58594561" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">
-							<a href="#">
-								<i class="fa fa-folder fa-lg"></i><br/>
-								texte trop bien
-							</a>
-						</div>
-						<div id="4343478" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">
-							<a href="#">
-								<i class="fa fa-folder fa-lg"></i><br/>
-								texte trop bien 2 !
-							</a>
-						</div>
+
 					</div>
 
 					<div id="imagesRow" class="row">
 
-						<div id="sdvsdv353" class="col-xs-6 col-md-2 draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
-						<div class="col-xs-6 col-md-2 photo draggable drag-drop yes-drop">
-							<a href="../public/img/a.jpg" data-gallery ><img src="../public/img/a.jpg" class="img-responsive"/></a>
-						</div>
 					</div>
 
 
@@ -151,9 +88,9 @@
 						<fieldset>
 							<!-- Text input-->
 							<div class="form-group">
-								<label class="control-label" for="iauteur">Titre :</label>
+								<label class="control-label" for="inom">Nom du dossier :</label>
 								<div class="col-md-10 col-md-offset-1 ">
-									<input id="iauteur" name="fauteur" placeholder="Titre" class="form-control input-md" type="text">
+									<input id="inom" name="fauteur" placeholder="Nom du dossier" class="form-control input-md" type="text">
 								</div>
 							</div>
 
@@ -181,22 +118,20 @@
 								</div>
 							</div>
 
-							<INPUT VALUE="Sauvegarder" TYPE="SUBMIT" class="btn btn-success">
+							<INPUT VALUE="Sauvegarder" id="validerInfoAlbum" class="btn btn-success">
 
 						</fieldset>
 					</form>
 				</div>
 			</div>
 
-			<!--
-			<form action="http://localhost:3000/upload?access_token=8f27973fcbacd0be01a2849dbaf1e24d2f9ba73d4cd1437d2435d4b970ff4acf"
-				  method="post" enctype="multipart/form-data">
-				<input type="hidden" name="album" value="56ae2ae81bfd099c5fb35257">
+			<form class="form navbar-form" id="addImage" enctype="multipart/form-data">
+				<input type="hidden" id="imageAlbumRoot" name="album" value="">
 				<input type="text" name="tags"/>
 				<input type="file" name="files[]" />
 				<input type="submit"/>
 			</form>
-			-->
+
 
 			<!-- service section starts here -->
 			<section class="service text-center" id="service">
