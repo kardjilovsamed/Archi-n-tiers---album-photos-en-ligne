@@ -35,7 +35,7 @@ router.post('/',
         if(req.file) {
             var photo = new Photo();
             photo.uri = req.file.path;
-            photo.url = "/"+photo._id+"/img";
+            photo.url = "/photos/"+photo._id+"/img";
             photo.tags = req.body.tags;
             photo.owner = req.user.id;
             photo.album = req.body.album;
