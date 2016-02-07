@@ -1,5 +1,6 @@
 var express = require('express');
 var passport = require('passport');
+var sharp = require('sharp');
 
 var router = express.Router();
 
@@ -33,12 +34,19 @@ router.post('/',
     // req.body will contain the text fields, if there were any
 
         if(req.file) {
+            sharp(req.file.path)
+                .resize(100, null)
+                .toFile(req.file.path+"_thumb", function(err) {
+
+                });
             var photo = new Photo();
             photo.uri = req.file.path;
             photo.url = "/photos/"+photo._id+"/img";
+            photo.urlThumb = "/photos/"+photo._id+"/thumb";
             photo.tags = req.body.tags;
             photo.owner = req.user.id;
             photo.album = req.body.album;
+
             Album.findById(photo.album, function(err, album) {
                 if(err) {
                     res.statusCode = 401;

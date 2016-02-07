@@ -7,6 +7,7 @@ var PhotoSchema = new mongoose.Schema({
     tags: String,
     uri: String,
     url: String,
+    urlThumb: String,
     private: {type: Boolean, default: true},
     owner: {
         type: Schema.Types.ObjectId,
