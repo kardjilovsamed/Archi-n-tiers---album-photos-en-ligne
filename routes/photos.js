@@ -32,13 +32,13 @@ router.get('/:id/img', function (req, res, next) {
     });
 });
 
-/* GET /photos/album/albumId */
-/*router.get('/album/:albumId', function (req, res, next) {
-    Photo.find({album: req.params.albumId}, function(err, photo) {
+/* GET /photos/id/thumb */
+router.get('/:id/thumb', function (req, res, next) {
+    Photo.findById(req.params.id, function(err, photo) {
         if (err) return next(err);
-        res.json(photo);
+        res.sendFile(path.resolve(photo.uri+"_thumb"));
     });
-});*/
+});
 
 /* POST /photos */
 router.post('/', function (req, res, next) {
