@@ -58,10 +58,6 @@ li a.active{
 	margin-top: 8px;
 }
 
-#buttonDeco {
-	margin-top: 8px;
-}
-
 .navbar-form {
 	border-bottom: 0 solid transparent;
 	border-top: 0 solid transparent;
@@ -295,16 +291,7 @@ responsive area
 	.header-backup{
 		height: 80px;
 	}
-	.about h2 {
-	  	font-size: 50px;
-	  	color: #42b3e5;
-	  	margin-top: 30px;
-	}
 	.service h2 {
-	  font-size: 50px;
-	  margin-top: 40px;
-	}
-	.team h2 {
 	  font-size: 50px;
 	  margin-top: 40px;
 	}

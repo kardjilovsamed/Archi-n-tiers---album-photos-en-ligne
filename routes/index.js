@@ -15,7 +15,17 @@ router.get('/a', function(req, res, next) {
     res.render('../views/login.html');
 });
 
-/* GET home page. */
+/* GET partage page. */
+router.get('/partage', function(req, res, next) {
+    res.render('../views/partage.html');
+});
+
+/* GET public page. */
+router.get('/public', function(req, res, next) {
+    res.render('../views/public.html');
+});
+
+/* GET jquery page. */
 router.get('/b', function(req, res, next) {
     res.render('../views/jQuery-File-Upload-9.11.2/jquery-ui.html');
 });
@@ -29,5 +39,6 @@ router.use('/albums', require('./albums'));
 router.use('/photos', require('./photos'));
 router.use('/upload', require('./upload'));
 router.use('/profile', require('./profile'));
+router.use('/search', require('./search'));
 
 module.exports = router;
