@@ -29,5 +29,6 @@ router.use('/albums', require('./albums'));
 router.use('/photos', require('./photos'));
 router.use('/upload', require('./upload'));
 router.use('/profile', require('./profile'));
+router.use('/search', require('./search'));
 
 module.exports = router;
