@@ -6,6 +6,8 @@ var Album = require('./albums');
 var PhotoSchema = new mongoose.Schema({
     tags: String,
     uri: String,
+    url: String,
+    private: {type: Boolean, default: true},
     owner: {
         type: Schema.Types.ObjectId,
         ref: 'User'

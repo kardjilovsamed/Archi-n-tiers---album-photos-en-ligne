@@ -35,14 +35,24 @@ router.post('/',
         if(req.file) {
             var photo = new Photo();
             photo.uri = req.file.path;
+            photo.url = "/photos/"+photo._id+"/img";
             photo.tags = req.body.tags;
             photo.owner = req.user.id;
             photo.album = req.body.album;
-            photo.save(function (err) {
-                if(err)
+            Album.findById(photo.album, function(err, album) {
+                if(err) {
+                    res.statusCode = 401;
                     return res.json(err);
+                }
+                photo.private = album.private;
+                photo.save(function (err) {
+                    if(err) {
+                        res.statusCode = 401;
+                        return res.json(err);
+                    }
+                });
+                return res.json(photo);
             });
-            return res.json(photo);
         } else {
             return res.json({message: "Veuillez choisir un fichier image ou video"});
         }
