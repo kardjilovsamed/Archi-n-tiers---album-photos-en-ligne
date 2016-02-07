@@ -52,7 +52,6 @@ router.get('/:id/content', passport.authenticate('bearer', { session: false }), 
 /* POST /albums */
 router.post('/', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     req.body.owner = req.user.id;
-    req.body.parentAlbum = req.user.albumRoot;
     Album.create(req.body, function (err, post) {
         if (err) return next(err);
         res.json(post);
