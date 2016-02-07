@@ -53,6 +53,7 @@ router.post('/',
                     return res.json(err);
                 }
                 photo.private = album.private;
+                photo.tags += ','+album.tags;
                 photo.save(function (err) {
                     if(err) {
                         res.statusCode = 401;
