@@ -93,12 +93,12 @@ router.delete('/:id', passport.authenticate('bearer', { session: false }), funct
 function hasPermission(users, id) {
     var i;
     users.some(function (user, index, usersList) {
-        if(user.id === id) {
+        if(user.id.equals(id)) {
             i = index;
             return true;
         }
     });
-    if(i)
+    if(i > -1)
         return i;
     else
         return -1;
