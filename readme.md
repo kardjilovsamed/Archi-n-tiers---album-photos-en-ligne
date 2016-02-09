@@ -10,6 +10,7 @@
 **[Albums](#albums)**  
 **[Upload](#upload)**  
 **[Photos](#photos)**  
+**[Search](#search)**  
 
 ##Install
 * Install nodejs v4.1.1
@@ -245,3 +246,34 @@ Any of these
 * uri : string
 * owner : User id
 * album : Album id
+
+
+###Search
+
+####GET /search/users
+
+#####params :
+* email => part of email
+* access_token
+
+#####Return :
+* List of 5 users which match the email
+    * id
+    * email
+    
+####GET /search/photos
+
+#####params :
+* owner : id of the owner
+* tag : string => all the images that have this tag
+* access_token
+
+#####Return :
+* List of photos
+    * tags : string
+    * uri : string
+    * url : string
+    * urlThumb : string
+    * private : boolean
+    * owner : User id
+    * album : Album id
