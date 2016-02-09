@@ -18,7 +18,7 @@ router.get('/', passport.authenticate('bearer', { session: false }), function(re
 router.get('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
-        if(album.owner == req.user.id || (album.permissions && album.permissions.indexOf(req.user._id) > -1)) {
+        if(album.owner == req.user.id || (album.permissions && hasPermission(album.permissions, req.user._id) > -1)) {
             res.json(album);
         } else {
             res.statusCode = 401;
@@ -31,7 +31,7 @@ router.get('/:id', passport.authenticate('bearer', { session: false }), function
 router.get('/:id/content', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     Album.findById(req.params.id, function(err, album) {
         if (err) return next(err);
-        if(album.owner == req.user.id || (album.permissions && album.permissions.indexOf(req.user._id) > -1)) {
+        if(album.owner == req.user.id || (album.permissions && hasPermission(album.permissions, req.user._id) > -1)) {
             var content = {current: album};
             Photo.find({album: req.params.id}, function(err, photos) {
                 if (err) return next(err);
@@ -60,15 +60,17 @@ router.post('/', passport.authenticate('bearer', { session: false }), function (
 
 /* PUT /albums/id */
 router.put('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
-    var query = {};
-    if(req.body.permissions)
+    var query = req.body;
+    if(req.body.permissions) {
         query.permissions = JSON.parse(req.body.permissions);
+    }
+
     Album.findOneAndUpdate({'_id': req.params.id, owner: req.user.id}, query, {new: true}, function(err, album) {
         if (err) return next(err);
         if(album) {
             return res.json(album);
         } else {
-            res.statusCode = 401;
+            res.statusCode = 400;
             return res.json({message: "Partage loupe :p"});
         }
     });
@@ -86,5 +88,21 @@ router.delete('/:id', passport.authenticate('bearer', { session: false }), funct
       }
   });
 });
+
+
+function hasPermission(users, id) {
+    var i;
+    users.some(function (user, index, usersList) {
+        if(user.id === id) {
+            i = index;
+            return true;
+        }
+    });
+    if(i)
+        return i;
+    else
+        return -1;
+}
+
 
 module.exports = router;
