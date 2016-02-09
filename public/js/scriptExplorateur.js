@@ -328,7 +328,7 @@ $(document).ready(function () {
             listMecPermis.push(personne);
 
             var sendInfo = {
-                permissions: listMecPermis
+                permissions: JSON.stringify(listMecPermis)
             };
 
             $.ajax({
