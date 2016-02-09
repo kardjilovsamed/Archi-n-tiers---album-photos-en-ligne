@@ -114,9 +114,7 @@ $(document).ready(function () {
             })
             .success(function (data) {
 
-                $.each(data.albums, function (index, item) {
-
-                    var lienAlbumEnfant = item.uri;
+                $.each(data, function (index, item) {
 
                     $("#foldersRow").append( '<div id="' + item._id + '" class="col-xs-6 col-md-2 album dropzone draggable drag-drop yes-drop">' +
                         '<a href="#"> ' +
