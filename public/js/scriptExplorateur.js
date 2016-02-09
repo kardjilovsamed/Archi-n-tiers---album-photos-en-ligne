@@ -122,6 +122,8 @@ $(document).ready(function () {
 
                 listMecPermis = data.current.permissions;
 
+                $("#mesPartages" ).empty();
+                
                 for (index = 0; index < listMecPermis.length; ++index) {
                     $("#mesPartages").append('<div class="alert alert-success fade in">' +
                         '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
