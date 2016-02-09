@@ -4,6 +4,7 @@ $(document).ready(function () {
     var idAlbumRoot = window.localStorage.getItem("albumRoot");
 
     var idAlbumRootLeVrai = idAlbumRoot;
+    var listMecPermis = [];
 
     $('#breadcrumb').children().last().attr('id', idAlbumRoot);
 
@@ -118,6 +119,22 @@ $(document).ready(function () {
                 $("#inom").val(data.current.nom);
                 $("#idescription").val(data.current.description);
 
+                listMecPermis = data.current.permissions;
+
+                for (index = 0; index < listMecPermis.length; ++index) {
+                    $("#mesPartages").append('<div class="alert alert-success fade in">' +
+                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                        '<strong>' + email + '</strong>' +
+                        '</div>')
+                }
+
+                if(data.current.private){
+                    $('#ivisibilite').bootstrapToggle('off');
+                } else {
+                    $('#ivisibilite').bootstrapToggle('on');
+                }
+
+
 
                 $.each(data.albums, function (index, item) {
 
@@ -152,7 +169,7 @@ $(document).ready(function () {
 
                 if(lienParent){
                     $("#foldersRow").prepend(  '<div id="' + lienParent + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
-                                                    '<a href="onvera.com">' +
+                                                    '<a href="">' +
                                                         '<i class="fa fa-folder fa-lg"></i><br/>' + '..' +
                                                     '</a>' +
                                                 '</div>' );
@@ -207,9 +224,9 @@ $(document).ready(function () {
         var privateBool;
 
         if($("#ivisibilite").parents('.off').length){
-            privateBool = false;
-        } else {
             privateBool = true;
+        } else {
+            privateBool = false;
         }
 
         var sendInfo = {
@@ -236,6 +253,98 @@ $(document).ready(function () {
 
     });
 
+
+    $("#searchUser").keyup(function () {
+
+        if($("#searchUser").val()){
+            $.ajax({
+                    type: "GET",
+                    url: "/search/users?access_token=" + token + "&email=" + $("#searchUser").val(),
+                    dataType: "json",
+                    encode: true
+                })
+                .success(function (data) {
+
+                    $("#resultatRecherche" ).empty();
+
+                    var nb = 0;
+
+                    $.each(data, function(index, item) {
+
+                        nb = nb + 1;
+
+                        var idTrouve = item._id;
+                        var emailTrouve = item.email;
+
+                        $("#resultatRecherche").append('<div id="' + idTrouve + '" class="alert alert-info alert-link fade in">' +
+                            '<a href="#" class="alert-link">' + emailTrouve + '</a>' +
+                            '</div>')
+
+                    });
+
+                    if(nb==0){
+                        $("#resultatRecherche").append('<p>Aucun résultat trouvé</p>')
+                    }
+
+                })
+                .error(function (data) {
+                    alert("Error, impossible de se connecter");
+                });
+        } else {
+            $("#resultatRecherche" ).empty();
+        }
+
+
+    });
+
+
+    $(document).on('click', '.alert-link', function(){
+        $("#resultatRecherche" ).empty();
+        $("#searchUser").val("");
+
+        var idAAjouter = $(this).parent().attr('id');
+
+        if(listMecPermis.indexOf(idAAjouter) > -1){
+
+            alert("Vous avez déjà partagé ce dossier avec cet utilisateur !");
+
+        } else {
+            listMecPermis.push(idAAjouter);
+
+            var sendInfo = {
+                permissions: listMecPermis
+            };
+
+            var email = $(this).text();
+
+            $.ajax({
+                    type: "PUT",
+                    url: "/albums/" + idAlbumRoot + '?access_token='+ token,
+                    data: sendInfo,
+                    dataType: "json",
+                    encode: true,
+                    success: function (data) {
+
+                        $("#mesPartages").append('<div class="alert alert-success fade in">' +
+                            '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            '<strong>' + email + '</strong>' +
+                            '</div>')
+
+
+                    }
+                })
+                .error(function (data) {
+                    alert("Error, impossible de se connecter");
+                });
+        }
+
+
+
+
+
+
+        return false;
+    });
 });
 
 
