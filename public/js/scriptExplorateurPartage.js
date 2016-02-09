@@ -5,6 +5,8 @@ $(document).ready(function () {
 
     var idAlbumRootLeVrai = idAlbumRoot;
 
+    var listMecPermis = [];
+
     $('#breadcrumb').children().last().attr('id', idAlbumRoot);
 
     getAlbumsFriends();
@@ -114,6 +116,21 @@ $(document).ready(function () {
             })
             .success(function (data) {
 
+                $("#inom").text("Album root");
+                $("#idescription").text("Contient les albums partagés avec vous.");
+                $("#itags").text("");
+
+                listMecPermis = data.current.permissions;
+
+                $("#mesPartages" ).empty();
+
+                for (index = 0; index < listMecPermis.length; ++index) {
+                    $("#mesPartages").append('<div id="' + listMecPermis[index].id + '" class="alert alert-success fade in">' +
+                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                        '<strong>' + listMecPermis[index].email + '</strong>' +
+                        '</div>')
+                }
+
                 $.each(data.albums, function (index, item) {
 
                     var lienAlbumEnfant = item.uri;
@@ -145,9 +162,20 @@ $(document).ready(function () {
                 .success(function (data) {
 
 
-                    $("#inom").val(data.current.nom);
-                    $("#idescription").val(data.current.description);
-                    $("#itags").val(data.current.tags);
+                    $("#inom").text(data.current.nom);
+                    $("#idescription").text(data.current.description);
+                    $("#itags").text(data.current.tags);
+
+                    listMecPermis = data.current.permissions;
+
+                    $("#mesPartages" ).empty();
+
+                    for (index = 0; index < listMecPermis.length; ++index) {
+                        $("#mesPartages").append('<div id="' + listMecPermis[index].id + '" class="alert alert-success fade in">' +
+                            '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            '<strong>' + listMecPermis[index].email + '</strong>' +
+                            '</div>')
+                    }
 
                     $.each(data.albums, function (index, item) {
 
