@@ -68,7 +68,12 @@ router.put('/:id', passport.authenticate('bearer', { session: false }), function
     Album.findOneAndUpdate({'_id': req.params.id, owner: req.user.id}, query, {new: true}, function(err, album) {
         if (err) return next(err);
         if(album) {
-            return res.json(album);
+            if(req.body.private) {
+                Photo.update({owner: req.user.id, album: album._id}, {private: req.body.private}, {multi: true}, function(err, photos) {
+                    if(err) return next(err);
+                    return res.json(album);
+                });
+            }
         } else {
             res.statusCode = 400;
             return res.json({message: "Partage loupe :p"});
