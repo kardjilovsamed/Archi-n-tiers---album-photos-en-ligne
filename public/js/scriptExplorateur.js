@@ -124,9 +124,10 @@ $(document).ready(function () {
                 for (index = 0; index < listMecPermis.length; ++index) {
                     $("#mesPartages").append('<div class="alert alert-success fade in">' +
                         '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                        '<strong>' + email + '</strong>' +
+                        '<strong>' + listMecPermis[index].email + '</strong>' +
                         '</div>')
                 }
+
 
                 if(data.current.private){
                     $('#ivisibilite').bootstrapToggle('off');
@@ -303,19 +304,33 @@ $(document).ready(function () {
         $("#searchUser").val("");
 
         var idAAjouter = $(this).parent().attr('id');
+        var email = $(this).text();
 
-        if(listMecPermis.indexOf(idAAjouter) > -1){
+        var isPersnneDejaDansLaListe = false;
+
+        for (index = 0; index < listMecPermis.length; ++index) {
+            if(listMecPermis[index].id == idAAjouter){
+                isPersnneDejaDansLaListe = true;
+            }
+        }
+
+
+        if(isPersnneDejaDansLaListe){
 
             alert("Vous avez déjà partagé ce dossier avec cet utilisateur !");
 
         } else {
-            listMecPermis.push(idAAjouter);
+
+            var personne = {
+                id : idAAjouter,
+                email : email
+            };
+
+            listMecPermis.push(personne);
 
             var sendInfo = {
                 permissions: listMecPermis
             };
-
-            var email = $(this).text();
 
             $.ajax({
                     type: "PUT",
@@ -329,7 +344,6 @@ $(document).ready(function () {
                             '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                             '<strong>' + email + '</strong>' +
                             '</div>')
-
 
                     }
                 })
