@@ -1,6 +1,9 @@
 var token = window.localStorage.getItem("token");
 var personne;
 
+//pour les photos
+//http://localhost:3000/search/photos?owner= &tag= &access_token=
+
 $("#rechercheAmi").keyup(function () {
 
     if($("#rechercheAmi").val()){
@@ -95,7 +98,7 @@ $(document).on('click', '.alert-link-ami', function(){
             '<strong>' + email + '</strong>' +
             '</div>');
 
-        $("#rechercheAmi").valid(false);
+        //$("#rechercheAmi").valid(false);
 
     }
 
