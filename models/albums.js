@@ -15,10 +15,15 @@ var AlbumSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Album'
     },
-    permissions: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }]
+    permissions: [
+        {
+            id: {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            },
+            email: String
+        }
+    ]
 });
 
 var Album = mongoose.model('Album', AlbumSchema);

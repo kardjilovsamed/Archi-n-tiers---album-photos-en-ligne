@@ -1,5 +1,6 @@
 var express = require('express');
 var passport = require('passport');
+// TODO : to uncomment if we want thumbnails and module sharp managed to install
 //var sharp = require('sharp');
 
 var router = express.Router();
@@ -34,6 +35,7 @@ router.post('/',
     // req.body will contain the text fields, if there were any
 
         if(req.file) {
+            // TODO : to uncomment if sharp managed to install
             /*sharp(req.file.path)
                 .resize(100, null)
                 .toFile(req.file.path+"_thumb", function(err) {
