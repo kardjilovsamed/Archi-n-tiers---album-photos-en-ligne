@@ -48,21 +48,18 @@
 <section class="service text-center" id="service">
     <div class="container">
         <div class="row">
-            <br/>
             <h2>Gallerie d'Image Publique</h2>
 
-            <!--form class="form-inline" id="recherche" -->
+            <div class="form-group">
                 <input type="text" class="form-control" name="rechercheAmi" id="rechercheAmi" placeholder="Par utilisateurs">
-                <div id="suggestionsAmi"></div>
                 <input type="text" class="form-control" id="rechercheMot" placeholder="Par mots clés">
-                <div id="suggestionsMot"></div>
-                <button type="submit" class="btn btn-default" id="banane">Recherche</button>
-            <!--/form-->
+                <!--button type="submit" class="btn btn-default" id="banane">Recherche</button-->
+            </div>
 
+            <div id="photos"></div>
 
             <!-- The container for the list of example images -->
             <div id="links"></div>
-
             <div id="blueimp-gallery" class="blueimp-gallery">
                 <!-- The container for the modal slides -->
                 <div class="slides"></div>
@@ -109,86 +106,8 @@
 
 <!-- Nos javascript -->
 <script src="../public/js/signUpIn.js"></script>
+<script src="../public/js/public.js"></script>
 
-<script type="application/javascript">
-    //pour les photos
-    //http://localhost:3000/search/photos?owner= &tag= &access_token=
 
-    $("#rechercheAmi").keyup(function () {
-
-        if($("#rechercheAmi").val()){
-            var token = window.localStorage.getItem("token");
-
-            $.ajax({
-                type: "GET",
-                url: "/search/users?access_token=" + token + "&email=" + $("#rechercheAmi").val(),
-                dataType: "json",
-                encode: true,
-                success: function(data){
-
-                    $("#suggestionsAmi").empty();
-                    var nb = 0;
-                    $.each(data, function(index, item) {
-                        nb = nb + 1;
-                        var idTrouve = item._id;
-                        var emailTrouve = item.email;
-
-                        $("#suggestionsAmi").append('<div id="' + idTrouve + '" class="alert alert-info alert-link fade in">' +
-                                '<a href="#" class="alert-link">' + emailTrouve + '</a>' +
-                                '</div>')
-                    });
-
-                    if(nb==0){
-                        $("#suggestionsAmi").append('<p>Aucun résultat trouvé</p>')
-                    }
-
-                },
-                error:function (data) {
-                    alert("Error, impossible de se connecter");
-                }
-            });
-        } else {
-            $("#suggestionsAmi" ).empty();
-        }
-    });
-
-    $("#rechercheMot").keyup(function () {
-
-        if($("#rechercheMot").val()){
-            var token = window.localStorage.getItem("token");
-
-            $.ajax({
-                type: "GET",
-                url: "/search/users?access_token=" + token + "&tag=" + $("#rechercheMot").val(),
-                dataType: "json",
-                encode: true,
-                success: function(data){
-
-                    $("#suggestionsMot").empty();
-                    var nb = 0;
-                    $.each(data, function(index, item) {
-                        nb = nb + 1;
-                        var idTrouve = item._id;
-                        var tagTrouve = item.tag;
-
-                        $("#suggestionsMot").append('<div id="' + idTrouve + '" class="alert alert-info alert-link fade in">' +
-                                '<a href="#" class="alert-link">' + tagTrouve + '</a>' +
-                                '</div>')
-                    });
-
-                    if(nb==0){
-                        $("#suggestionsMot").append('<p>Aucun résultat trouvé</p>')
-                    }
-
-                },
-                error:function (data) {
-                    alert("Error, impossible de se connecter");
-                }
-            });
-        } else {
-            $("#suggestionsMot" ).empty();
-        }
-    });
-</script>
 </body>
 </html>
