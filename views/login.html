@@ -80,6 +80,14 @@
 					<div id="imagesRow" class="row">
 
 					</div>
+
+					<form class="form navbar-form" id="addImage" enctype="multipart/form-data">
+						<input type="hidden" id="imageAlbumRoot" name="album" value="">
+						<label>Mots clefs :</label>
+						<input type="text" name="tags"/>
+						<input type="file" name="files[]" />
+						<button class="btn btn-info" type="submit">Envoyer</button>
+					</form>
 				</div>
 
 				<div id="parametresDossier" class="col-md-4" >
@@ -142,14 +150,6 @@
 					</form>
 				</div>
 			</div>
-
-			<form class="form navbar-form" id="addImage" enctype="multipart/form-data">
-				<input type="hidden" id="imageAlbumRoot" name="album" value="">
-				<label>Mots clefs :</label>
-				<input type="text" name="tags"/>
-				<input type="file" name="files[]" />
-				<button class="btn btn-info" type="submit">Envoyer</button>
-			</form>
 
 
 			<!-- service section starts here -->

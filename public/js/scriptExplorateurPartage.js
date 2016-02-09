@@ -204,18 +204,6 @@ $(document).ready(function () {
 
                     });
 
-
-                    var lienParent = data.current.parentAlbum;
-
-                    if (lienParent) {
-                        $("#foldersRow").prepend('<div id="' + lienParent + '" class="col-xs-6 col-md-2 albumParent dropzone draggable drag-drop yes-drop">' +
-                            '<a href="onvera.com">' +
-                            '<i class="fa fa-folder fa-lg"></i><br/>' + '..' +
-                            '</a>' +
-                            '</div>');
-                    }
-
-
                 })
                 .error(function (data) {
                     alert("Error, impossible de se connecter");
