@@ -147,7 +147,7 @@ $(document).ready(function () {
 
                     $("#inom").val(data.current.nom);
                     $("#idescription").val(data.current.description);
-
+                    $("#itags").val(data.current.tags);
 
                     $.each(data.albums, function (index, item) {
 

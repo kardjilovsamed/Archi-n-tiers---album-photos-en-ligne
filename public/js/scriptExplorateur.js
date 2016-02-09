@@ -118,6 +118,7 @@ $(document).ready(function () {
 
                 $("#inom").val(data.current.nom);
                 $("#idescription").val(data.current.description);
+                $("#itags").val(data.current.tags);
 
                 listMecPermis = data.current.permissions;
 
@@ -233,7 +234,8 @@ $(document).ready(function () {
         var sendInfo = {
             nom: $("#inom").val(),
             description: $("#idescription").val(),
-            private: privateBool
+            private: privateBool,
+            tags: $("#itags").val()
         };
 
         $.ajax({
