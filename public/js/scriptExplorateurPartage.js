@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     var idAlbumRootLeVrai = idAlbumRoot;
 
-    var listMecPermis = [];
+    //var listMecPermis = [];
 
     $('#breadcrumb').children().last().attr('id', idAlbumRoot);
 
@@ -120,6 +120,7 @@ $(document).ready(function () {
                 $("#idescription").text("Contient les albums partagés avec vous.");
                 $("#itags").text("");
 
+                /*
                 listMecPermis = data.current.permissions;
 
                 $("#mesPartages" ).empty();
@@ -130,6 +131,7 @@ $(document).ready(function () {
                         '<strong>' + listMecPermis[index].email + '</strong>' +
                         '</div>')
                 }
+                */
 
                 $.each(data, function (index, item) {
 
