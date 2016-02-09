@@ -24,7 +24,9 @@ router.get('/photos', passport.authenticate('bearer', { session: false }), funct
 
 // GET search/users
 router.get('/users', passport.authenticate('bearer', { session: false }), function (req, res, next) {
-    User.find({email: {$regex: req.query.email, $options: "i"}}, '_id email', function(err, users) {
+    User.find({email: {$regex: req.query.email, $options: "i"}}, '_id email')
+        .limit(5)
+        .exec(function(err, users) {
         if (err) {
             res.statusCode = 401;
             return res.json(err);
