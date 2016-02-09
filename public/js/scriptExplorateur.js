@@ -357,7 +357,8 @@ $(document).ready(function () {
 
     $(document).on('click', '#my-alert', function(){
 
-            var currentID = $(this).parent().attr('id');
+
+        var currentID = $(this).parent().attr('id');
             var email = $(this).text();
 
             for (index = 0; index < listMecPermis.length; ++index) {
@@ -366,41 +367,23 @@ $(document).ready(function () {
                 }
             }
 
+        var sendInfo = {
+            permissions: listMecPermis
+        };
 
-           var personne = {
-               id : idAAjouter,
-               email : email
-           };
-
-                listMecPermis.push(personne);
-
-                var sendInfo = {
-                    permissions: listMecPermis
-                };
-
-                $.ajax({
-                        type: "PUT",
-                        url: "/albums/" + idAlbumRoot + '?access_token='+ token,
-                        data: sendInfo,
-                        dataType: "json",
-                        encode: true,
-                        success: function (data) {
-
-                            $("#mesPartages").append('<div id="my-alert" class="alert alert-success fade in">' +
-                                '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
-                                '<strong>' + email + '</strong>' +
-                                '</div>')
-
-                        }
-                    })
-                    .error(function (data) {
-                        alert("Error, impossible de se connecter");
-                    });
-            }
-
-
-            return false;
+        $.ajax({
+        type: "PUT",
+        url: "/albums/" + idAlbumRoot + '?access_token='+ token,
+        data: sendInfo,
+        dataType: "json",
+        encode: true,
+        success: function (data) {
+        }
+        })
+        .error(function (data) {
+            alert("Error, impossible de se connecter");
         });
+    });
 });
 
 
