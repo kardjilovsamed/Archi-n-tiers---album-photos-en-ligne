@@ -9,11 +9,8 @@ var Photo = require('../models/photos');
 // GET search/photos
 router.get('/photos', passport.authenticate('bearer', { session: false }), function (req, res, next) {
     var query = {private: false};
-    if(req.query.ownerId)
-        query.owner = req.query.ownerId;
-    if(req.query.owner) {
-        User.findOne({email: req.query.owner})
-    }
+    if(req.query.owner)
+        query.owner = req.query.owner;
     if(req.query.tag)
         query.tags = {$regex: req.query.tag, $options: "i"};
     Photo.find(query, function(err, photos) {
