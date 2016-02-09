@@ -60,7 +60,10 @@ router.post('/', passport.authenticate('bearer', { session: false }), function (
 
 /* PUT /albums/id */
 router.put('/:id', passport.authenticate('bearer', { session: false }), function (req, res, next) {
-    Album.findOneAndUpdate({'_id': req.params.id, owner: req.user.id}, req.body, {new: true}, function(err, album) {
+    var query = {};
+    if(req.body.permissions)
+        query.permissions = JSON.parse(req.body.permissions);
+    Album.findOneAndUpdate({'_id': req.params.id, owner: req.user.id}, query, {new: true}, function(err, album) {
         if (err) return next(err);
         if(album) {
             return res.json(album);
