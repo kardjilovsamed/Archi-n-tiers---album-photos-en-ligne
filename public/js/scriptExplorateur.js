@@ -123,9 +123,9 @@ $(document).ready(function () {
                 listMecPermis = data.current.permissions;
 
                 $("#mesPartages" ).empty();
-                
+
                 for (index = 0; index < listMecPermis.length; ++index) {
-                    $("#mesPartages").append('<div class="alert alert-success fade in">' +
+                    $("#mesPartages").append('<div id="' + listMecPermis[index].id + '" class="alert alert-success fade in">' +
                         '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                         '<strong>' + listMecPermis[index].email + '</strong>' +
                         '</div>')
@@ -343,7 +343,7 @@ $(document).ready(function () {
                     encode: true,
                     success: function (data) {
 
-                        $("#mesPartages").append('<div id="my-alert" class="alert alert-success fade in">' +
+                        $("#mesPartages").append('<div class="alert alert-success fade in">' +
                             '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
                             '<strong>' + email + '</strong>' +
                             '</div>')
@@ -359,30 +359,33 @@ $(document).ready(function () {
         return false;
     });
 
-    $(document).on('click', '#my-alert', function(){
 
 
-        var currentID = $(this).parent().attr('id');
-            var email = $(this).text();
+    $(document).on('close.bs.alert', '.alert', function(){
 
-            for (index = 0; index < listMecPermis.length; ++index) {
-                if(listMecPermis[index].id == currentID){
-                    listMecPermis.remove(listMecPermis[index]);
-                }
+        var currentID = $(this).attr('id');
+        var email = $(this).text();
+
+        for (index = 0; index < listMecPermis.length; ++index) {
+
+            if(listMecPermis[index].id == currentID){
+                listMecPermis.splice(index, 1);
+                break;
             }
+        }
 
         var sendInfo = {
-            permissions: listMecPermis
+            permissions: JSON.stringify(listMecPermis)
         };
 
         $.ajax({
-        type: "PUT",
-        url: "/albums/" + idAlbumRoot + '?access_token='+ token,
-        data: sendInfo,
-        dataType: "json",
-        encode: true,
-        success: function (data) {
-        }
+            type: "PUT",
+            url: "/albums/" + idAlbumRoot + '?access_token='+ token,
+            data: sendInfo,
+            dataType: "json",
+            encode: true,
+            success: function (data) {
+            }
         })
         .error(function (data) {
             alert("Error, impossible de se connecter");
