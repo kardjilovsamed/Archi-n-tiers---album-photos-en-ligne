@@ -89,3 +89,9 @@ img{
 	overflow: auto;
 	color: #333;
 }
+
+.alert {
+	padding: 8px;
+	margin-bottom: 0;
+	border-radius: 6px;
+}
